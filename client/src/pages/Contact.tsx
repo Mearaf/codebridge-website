@@ -1,0 +1,402 @@
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Link } from "wouter";
+import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, CheckCircle } from "lucide-react";
+import Footer from "@/components/Footer";
+import { insertContactSchema } from "@shared/schema";
+import { z } from "zod";
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { toast } = useToast();
+
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const response = await apiRequest("POST", "/api/contact", data);
+      return response.json();
+    },
+    onSuccess: () => {
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Failed to send message",
+        description: error.message || "Please try again later.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const validatedData = insertContactSchema.parse(formData);
+      contactMutation.mutate(validatedData);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Form validation error",
+          description: "Please fill in all required fields correctly.",
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const faqData = [
+    {
+      question: "How long does a typical project take?",
+      answer: "Project timelines vary based on scope and complexity. A tech audit typically takes 1-2 weeks, while setup and build projects can range from 4-12 weeks. During our initial consultation, we'll provide a more specific timeline based on your needs."
+    },
+    {
+      question: "Do you work with complete beginners?",
+      answer: "Absolutely! We specialize in working with people who don't consider themselves 'tech people.' Our approach is designed to meet you exactly where you are and guide you forward with patience and clarity."
+    },
+    {
+      question: "What's included in the free consultation?",
+      answer: "Our free consultation is a 30-minute conversation where we discuss your current tech situation, goals, and challenges. We'll explore potential solutions and determine if we're a good fit to work together. No sales pressure, just genuine guidance."
+    },
+    {
+      question: "What types of businesses do you work with?",
+      answer: "We work with solo founders, small businesses, nonprofits, and community organizations. Our sweet spot is working with mission-driven people and organizations who want to understand and own their technology, not just outsource it."
+    },
+    {
+      question: "Do you provide ongoing support?",
+      answer: "Yes! We offer ongoing support and training packages to ensure you stay confident with your technology. This includes regular check-ins, system updates, troubleshooting, and strategic planning."
+    },
+    {
+      question: "What if I'm not sure what I need?",
+      answer: "That's exactly why we offer free consultations! Many of our clients come to us feeling overwhelmed and unsure about their tech needs. We'll help you identify priorities and create a clear path forward."
+    },
+    {
+      question: "How do you price your services?",
+      answer: "We offer transparent, project-based pricing. Tech audits start at $2,500, setup and build projects start at $8,000, and ongoing support starts at $500/month. We'll provide a detailed proposal after understanding your specific needs."
+    },
+    {
+      question: "Can you work with our existing tools?",
+      answer: "In most cases, yes! Part of our approach is evaluating what's already working for you and building from there. We believe in practical solutions that work with your current reality, not forcing you to start over."
+    }
+  ];
+
+  if (isSubmitted) {
+    return (
+      <div className="pt-16 min-h-screen bg-black text-white flex items-center justify-center">
+        <Card className="bg-zinc-900 border-gray-800 max-w-md mx-4">
+          <CardContent className="p-8 text-center">
+            <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-6" />
+            <h2 className="text-2xl font-bold mb-4">Message Sent!</h2>
+            <p className="text-gray-300 mb-6">
+              Thank you for reaching out. We'll get back to you within 24 hours.
+            </p>
+            <Button 
+              onClick={() => setIsSubmitted(false)}
+              className="bg-blue-500 hover:bg-blue-400 text-black font-semibold mr-4"
+            >
+              Send Another Message
+            </Button>
+            <Link href="/">
+              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                Return Home
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pt-16 min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Let's <span className="gradient-text">Connect</span>
+          </h1>
+          <p className="text-xl text-gray-300 leading-relaxed">
+            Ready to start your tech journey? We'd love to hear from you.
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Options */}
+      <section className="py-12 bg-black">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="bg-zinc-900 border-gray-800 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="text-blue-400" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Book a Free Call</h3>
+                <p className="text-gray-400 mb-6">
+                  30-minute conversation about your tech goals and challenges.
+                </p>
+                <Link href="/book-call">
+                  <Button className="bg-blue-500 hover:bg-blue-400 text-black font-semibold">
+                    Schedule Call
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-zinc-900 border-gray-800 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle className="text-purple-400" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Send a Message</h3>
+                <p className="text-gray-400 mb-6">
+                  Detailed questions or project inquiries via our contact form.
+                </p>
+                <Button 
+                  onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-purple-600 hover:bg-purple-500 text-white font-semibold"
+                >
+                  Message Us
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-zinc-900 border-gray-800 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="text-orange-400" size={32} />
+                </div>
+                <h3 className="text-xl font-bold mb-3">Quick Questions</h3>
+                <p className="text-gray-400 mb-6">
+                  Simple questions or need immediate assistance.
+                </p>
+                <Button 
+                  variant="outline"
+                  className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white"
+                >
+                  Email Direct
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Contact Section */}
+      <section className="py-20 bg-zinc-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <Card id="contact-form" className="bg-black/70 border-gray-800">
+              <CardHeader>
+                <h2 className="text-2xl font-bold">Send Us a Message</h2>
+                <p className="text-gray-400">
+                  Tell us about your tech challenges and we'll get back to you within 24 hours.
+                </p>
+              </CardHeader>
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Your Name *</label>
+                      <Input
+                        name="name"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Email Address *</label>
+                      <Input
+                        name="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Subject *</label>
+                    <Input
+                      name="subject"
+                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Message *</label>
+                    <Textarea
+                      name="message"
+                      rows={6}
+                      placeholder="Tell us about your tech challenges, goals, or questions..."
+                      value={formData.message}
+                      onChange={handleChange}
+                      className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 resize-none"
+                      required
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    disabled={contactMutation.isPending}
+                    className="w-full bg-blue-500 hover:bg-blue-400 text-black font-semibold py-4"
+                  >
+                    {contactMutation.isPending ? "Sending..." : "Get Clarity"}
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+            
+            {/* Contact Info and FAQ */}
+            <div className="space-y-8">
+              {/* Contact Information */}
+              <Card className="bg-black/70 border-gray-800">
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold mb-6">Get in Touch</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center">
+                      <Mail className="text-blue-400 mr-4" size={20} />
+                      <div>
+                        <p className="text-white">Email</p>
+                        <p className="text-gray-300">hello@codebridge.tech</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <Phone className="text-blue-400 mr-4" size={20} />
+                      <div>
+                        <p className="text-white">Phone</p>
+                        <p className="text-gray-300">(555) 123-4567</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="text-blue-400 mr-4" size={20} />
+                      <div>
+                        <p className="text-white">Response Time</p>
+                        <p className="text-gray-300">Within 24 hours</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <MapPin className="text-blue-400 mr-4" size={20} />
+                      <div>
+                        <p className="text-white">Service Area</p>
+                        <p className="text-gray-300">Remote & Local (US)</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Quick Links */}
+              <Card className="bg-black/70 border-gray-800">
+                <CardContent className="p-8">
+                  <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
+                  <div className="space-y-4">
+                    <Link href="/book-call">
+                      <Button className="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold justify-start">
+                        <Calendar className="mr-3" size={16} />
+                        Schedule Free Consultation
+                      </Button>
+                    </Link>
+                    <Link href="/client-intake">
+                      <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 justify-start">
+                        <MessageCircle className="mr-3" size={16} />
+                        Complete Client Intake Form
+                      </Button>
+                    </Link>
+                    <Link href="/services">
+                      <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 justify-start">
+                        <CheckCircle className="mr-3" size={16} />
+                        View Our Services
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-black">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-6">
+              Frequently Asked <span className="gradient-text">Questions</span>
+            </h2>
+            <p className="text-xl text-gray-300">
+              Common questions about working with CodeBridge.
+            </p>
+          </div>
+          
+          <Card className="bg-zinc-900 border-gray-800">
+            <CardContent className="p-8">
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqData.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`} className="border-gray-700">
+                    <AccordionTrigger className="text-left hover:text-blue-400 transition-colors">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-400 leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-zinc-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            Still Have <span className="gradient-text">Questions</span>?
+          </h2>
+          <p className="text-xl text-gray-300 mb-8">
+            The best way to get answers is to have a conversation. No pressure, just clarity.
+          </p>
+          <Link href="/book-call">
+            <Button size="lg" className="bg-blue-500 hover:bg-blue-400 text-black font-semibold px-8 py-4 tech-glow">
+              Book Your Free Call
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
