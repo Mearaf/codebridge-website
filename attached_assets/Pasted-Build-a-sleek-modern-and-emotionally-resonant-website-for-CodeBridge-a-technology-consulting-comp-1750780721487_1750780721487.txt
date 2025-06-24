@@ -1,0 +1,144 @@
+Build a sleek, modern, and emotionally resonant website for CodeBridge, a technology consulting company. The mission of Code Bridge is to bridge the gap between people and companies using the latest tech, and those who don’t even know where to start. We help everyday professionals, small business owners, and nonprofits overcome tech overwhelm and confidently modernize — without the jargon, judgment, or complexity.
+
+🔥 Brand Philosophy
+“At Code Bridge, we believe technology should empower — not intimidate. We meet people where they are and guide them forward with clarity, warmth, and the best modern tools.”
+
+Tone: calm, capable, clean. Confident but never arrogant.
+
+Position the brand as a friendly guide, not just a vendor.
+
+🎨 Design Direction
+Design Inspiration: Apple, Tesla – minimal, elegant, visually calming.
+
+Color Palette: White and charcoal base, with optional accent of mint, steel blue, or electric teal.
+
+Typography: Large, clear headings. Airy layout. Prioritize readability and breathing room.
+
+Visual Style: Sleek iconography. No clutter. Intentional white space. Friendly but polished.
+
+🧩 Pages & Sections (Structure)
+1. Home
+
+Hero Section:
+
+Headline: “Technology Shouldn’t Be Intimidating.”
+
+Subtext: “We help you modernize with clarity, confidence, and support.”
+
+CTA Button: “Book a Free Call”
+
+Sections:
+
+Mission Block with short manifesto
+
+Who We Help (icons for small biz, nonprofits, solo founders, etc.)
+
+3-Tier Services Preview: Tech Audit | Setup & Build | Support & Training
+
+Quote Block or Testimonial
+
+"Who It’s Not For" Section (softly worded)
+
+Email Signup: “Get monthly tech tips in plain English”
+
+2. About
+
+Founder story: why Code Bridge was started, who it’s for, and what makes this different
+
+Emphasis on empowerment and approachability
+
+Callout box: “We don’t just fix problems. We build your confidence with tech.”
+
+3. Services
+
+Structured for flexibility — initially show 3 core categories:
+
+Tech Audit: Evaluate current workflows, tools, and opportunities
+
+Setup & Build: Modernize outdated systems or build new ones
+
+Support & Training: Ongoing help, coaching, or team enablement
+
+Each block: icon, short description, CTA button (“Let’s Talk”)
+
+4. Book a Call
+
+Embedded booking calendar (Calendly or similar)
+
+Section header: “Let’s Talk Tech”
+
+Subtext: “We’ll meet you wherever you are and help you move forward — no pressure.”
+
+5. Client Intake Form
+
+Smart, multi-step form with progress bar
+
+Capture: Name, Business Type, Main Tech Struggles, Tools Currently Used, Contact Info
+
+6. Blog / Resources
+
+Title: “Plain-English Tech Tips”
+
+Filterable layout for articles, videos, and quick wins
+
+Spotlight: featured post block at top
+
+7. Testimonials
+
+Rotating slider or two-column layout
+
+Display: name, photo (optional), business name, quote
+
+8. Contact Page
+
+Clean contact form
+
+Add optional FAQ accordion below
+
+⚙️ Must-Have Features
+AI chatbot embedded in lower-right corner, styled to match brand
+
+Fully mobile responsive
+
+Email signup (Mailchimp or similar integration)
+
+SEO-ready with semantic HTML and optimized metadata
+
+Accessibility compliant (labels, alt text, contrast, keyboard nav)
+
+👥 Audience Overview
+Solo founders, small business owners, nonprofits, local leaders
+
+Women-led and minority-owned businesses (inclusive tone)
+
+Professionals who are tech-avoidant but ready to modernize
+
+Community-centered orgs that want more control and clarity in their systems
+
+Not for: enterprise clients or businesses looking to outsource everything with no involvement
+
+💬 Language Style
+Conversational, clear, and warm
+
+Avoid jargon
+
+Aim to inspire action without pressure
+
+Use microcopy on buttons and forms like:
+
+“Show me how”
+
+“Get clarity”
+
+“Start my tech journey”
+
+🎯 Goals of the Website
+Build instant trust with clean design and clear value.
+
+Empower non-tech-savvy users to feel seen, understood, and supported.
+
+Drive action: book a call, read a resource, or join the email list.
+
+Support organic growth and search visibility over time.
+
+End result should feel inviting, intelligent, and future-forward — like a modern digital bridge between fear and capability.
