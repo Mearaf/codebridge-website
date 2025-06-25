@@ -321,7 +321,7 @@ export default function Contact() {
               <Card className="bg-white/95 border-gray-400 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-6 text-black">Quick Actions</h3>
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <Link href="/book-call">
                       <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold justify-start">
                         <Calendar className="mr-3" size={16} />
