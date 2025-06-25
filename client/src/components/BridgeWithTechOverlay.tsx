@@ -60,14 +60,8 @@ export default function BridgeWithTechOverlay({
       setVideoLoaded(true);
     };
 
-    // Try different bridge video sources
-    const bridgeVideos = [
-      "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-      "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
-    ];
-    
-    video.src = bridgeVideos[0];
+    // Skip video entirely and focus on strong visual bridge background
+    setVideoError(true); // Force fallback to image
     
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('error', handleError);
@@ -105,8 +99,8 @@ export default function BridgeWithTechOverlay({
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
-          filter: 'brightness(0.4) contrast(1.2) grayscale(1)',
-          opacity: videoError ? 0.3 : 0.2
+          filter: 'brightness(0.6) contrast(1.1) grayscale(0.8)',
+          opacity: 0.4
         }}
       />
 
@@ -122,8 +116,8 @@ export default function BridgeWithTechOverlay({
               animationDuration: '4s'
             }}
           >
-            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl border border-black/10 flex items-center justify-center hover:bg-white/30 transition-all duration-300 shadow-lg">
-              <Icon className="w-7 h-7 text-black/80" />
+            <div className="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-2xl border border-black/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 shadow-xl">
+              <Icon className="w-8 h-8 text-black" />
             </div>
           </div>
         ))}
@@ -161,8 +155,8 @@ export default function BridgeWithTechOverlay({
             linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
             linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
           `,
-          backgroundSize: '30px 30px',
-          opacity: 0.4
+          backgroundSize: '40px 40px',
+          opacity: 0.6
         }}
       />
 
@@ -172,10 +166,10 @@ export default function BridgeWithTechOverlay({
         style={{
           background: `
             radial-gradient(circle at center, 
-              rgba(255,255,255,0.85) 0%, 
-              rgba(255,255,255,0.65) 40%,
-              rgba(255,255,255,0.45) 70%,
-              rgba(255,255,255,0.75) 100%)
+              rgba(255,255,255,0.7) 0%, 
+              rgba(255,255,255,0.5) 40%,
+              rgba(255,255,255,0.3) 70%,
+              rgba(255,255,255,0.6) 100%)
           `
         }}
       />
