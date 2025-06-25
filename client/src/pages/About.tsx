@@ -19,14 +19,14 @@ export default function About() {
       </section>
 
       {/* Founder Story */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6">
                 Why CodeBridge <span className="gradient-text">Exists</span>
               </h2>
-              <div className="space-y-6 text-gray-300 leading-relaxed">
+              <div className="space-y-6 text-gray-700 leading-relaxed">
                 <p>
                   Technology has the power to transform lives and businesses, but too often it becomes a source of frustration and overwhelm. We founded CodeBridge because we saw brilliant people and amazing organizations held back not by lack of vision, but by technology that felt intimidating and inaccessible.
                 </p>
@@ -110,7 +110,7 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
             Ready to Start Your <span className="gradient-text">Tech Journey</span>?

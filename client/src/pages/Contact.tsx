@@ -106,22 +106,22 @@ export default function Contact() {
 
   if (isSubmitted) {
     return (
-      <div className="pt-16 min-h-screen bg-black text-white flex items-center justify-center">
-        <Card className="bg-zinc-900 border-gray-800 max-w-md mx-4">
+      <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90 flex items-center justify-center">
+        <Card className="bg-white/95 border-gray-400 shadow-lg max-w-md mx-4">
           <CardContent className="p-8 text-center">
             <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-6" />
-            <h2 className="text-2xl font-bold mb-4">Message Sent!</h2>
-            <p className="text-gray-300 mb-6">
+            <h2 className="text-2xl font-bold mb-4 text-black">Message Sent!</h2>
+            <p className="text-gray-700 mb-6">
               Thank you for reaching out. We'll get back to you within 24 hours.
             </p>
             <Button 
               onClick={() => setIsSubmitted(false)}
-              className="bg-blue-500 hover:bg-blue-400 text-black font-semibold mr-4"
+              className="bg-black hover:bg-gray-800 text-white font-semibold mr-4"
             >
               Send Another Message
             </Button>
             <Link href="/">
-              <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
                 Return Home
               </Button>
             </Link>
@@ -132,7 +132,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-black text-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
