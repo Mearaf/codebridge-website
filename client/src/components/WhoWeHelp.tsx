@@ -30,13 +30,13 @@ export default function WhoWeHelp() {
   ];
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-gradient-to-b from-blue-50 to-purple-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
             Who We <span className="gradient-text">Help</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We work with forward-thinking professionals and organizations ready to modernize without the overwhelm.
           </p>
         </div>

@@ -51,16 +51,16 @@ export default function EmailSignup() {
   };
 
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-gradient-to-b from-purple-50 to-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
           Stay <span className="gradient-text">Connected</span>
         </h2>
-        <p className="text-xl text-gray-300 mb-8">
+        <p className="text-xl text-gray-600 mb-8">
           Get monthly tech tips in plain English — no jargon, just actionable insights.
         </p>
         
-        <Card className="bg-zinc-900 border-gray-800 max-w-2xl mx-auto">
+        <Card className="bg-white/80 border-gray-200 shadow-lg max-w-2xl mx-auto">
           <CardContent className="p-8">
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
               <Input

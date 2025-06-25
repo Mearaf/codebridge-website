@@ -94,12 +94,12 @@ The application uses the following main entities:
 
 ## Recent Changes
 
-✓ Softened design to be more approachable while maintaining modern tech aesthetic
-✓ Updated color palette from harsh black/blue to warmer slate/sky tones
-✓ Reduced aggressive animations and glow effects for better accessibility
-✓ Fixed gradient text display issues across all browsers
-✓ Enhanced visual hierarchy with better contrast and readability
-✓ Aligned visual design with human-centered mission and values
+✓ Completely transformed to light, warm, and inviting design
+✓ Changed from dark theme to bright, approachable light theme
+✓ Updated all backgrounds to soft gradients with blue, purple, and white tones
+✓ Replaced aggressive tech elements with friendly floating shapes
+✓ Enhanced readability with dark text on light backgrounds
+✓ Made design more welcoming for non-technical customers
 
 ## Changelog
 
