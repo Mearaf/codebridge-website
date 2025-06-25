@@ -10,7 +10,7 @@ export default function About() {
       {/* Hero Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        videoSrc="https://cdn.mixkit.co/videos/preview/mixkit-people-working-in-an-office-4563-large.mp4"
+        videoSrc="https://videos.pexels.com/video-files/6774/6774-uhd_2560_1440_30fps.mp4"
         imageSrc="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
         opacity={0.08}
         useVideo={true}
