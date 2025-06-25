@@ -94,15 +94,7 @@ export default function BridgeWithTechOverlay({
         />
       )}
 
-      {/* Static Bridge Image Background */}
-      <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
-          filter: 'brightness(0.5) contrast(1.2) grayscale(0.9)',
-          opacity: videoError ? 0.4 : 0.2
-        }}
-      />
+
 
       {/* Tech Icons Overlay - Show for Golden Bridge since it doesn't have tech overlay */}
       {!videoError && (
