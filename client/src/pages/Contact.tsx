@@ -196,7 +196,7 @@ export default function Contact() {
                 </p>
                 <Button 
                   variant="outline"
-                  className="border-black text-black hover:bg-black hover:text-white"
+                  className="border-black text-black hover:bg-black hover:text-white transition-colors duration-200"
                 >
                   Email Direct
                 </Button>
@@ -335,13 +335,13 @@ export default function Contact() {
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-200 hover:text-black justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-100 hover:text-black justify-start transition-colors duration-200">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-200 hover:text-black justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-100 hover:text-black justify-start transition-colors duration-200">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
