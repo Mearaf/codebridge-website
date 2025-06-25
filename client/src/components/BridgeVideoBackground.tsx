@@ -39,22 +39,45 @@ export default function BridgeVideoBackground({
       const centerX = canvas.width * 0.5;
       const archHeight = canvas.height * 0.15;
       
-      // Draw bridge arch
+      // Draw bridge arch - make it more visible
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.25)';
+      ctx.lineWidth = 4;
       ctx.beginPath();
       ctx.moveTo(leftX, centerY);
       ctx.quadraticCurveTo(centerX, centerY - archHeight, rightX, centerY);
       ctx.stroke();
       
-      // Vertical support cables
-      for (let i = 0; i < 8; i++) {
-        const x = leftX + (rightX - leftX) * (i / 7);
-        const cableHeight = Math.sin((i / 7) * Math.PI) * archHeight * 0.8;
+      // Draw bridge deck
+      ctx.beginPath();
+      ctx.moveTo(leftX, centerY);
+      ctx.lineTo(rightX, centerY);
+      ctx.stroke();
+      
+      // Vertical support cables - more visible
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 12; i++) {
+        const x = leftX + (rightX - leftX) * (i / 11);
+        const cableHeight = Math.sin((i / 11) * Math.PI) * archHeight * 0.8;
         
         ctx.beginPath();
         ctx.moveTo(x, centerY - cableHeight);
-        ctx.lineTo(x, centerY + 50);
+        ctx.lineTo(x, centerY + 80);
         ctx.stroke();
       }
+      
+      // Bridge towers
+      ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(leftX + 50, centerY - archHeight - 50);
+      ctx.lineTo(leftX + 50, centerY + 100);
+      ctx.stroke();
+      
+      ctx.beginPath();
+      ctx.moveTo(rightX - 50, centerY - archHeight - 50);
+      ctx.lineTo(rightX - 50, centerY + 100);
+      ctx.stroke();
       
       // Tech grid overlay
       ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
@@ -97,8 +120,9 @@ export default function BridgeVideoBackground({
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
         style={{ 
-          opacity: videoLoaded ? 0.4 : 0,
-          transition: 'opacity 1.5s ease-in-out'
+          opacity: videoLoaded ? 0.6 : 0,
+          transition: 'opacity 1.5s ease-in-out',
+          zIndex: 1
         }}
       />
 
@@ -107,8 +131,8 @@ export default function BridgeVideoBackground({
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
-          filter: 'brightness(0.3) contrast(1.2) grayscale(1)',
-          opacity: 0.08
+          filter: 'brightness(0.4) contrast(1.1) grayscale(0.9)',
+          opacity: 0.15
         }}
       />
 
