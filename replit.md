@@ -92,10 +92,19 @@ The application uses the following main entities:
 - **Scaling**: Autoscale deployment target
 - **Port Configuration**: Internal port 5000, external port 80
 
+## Recent Changes
+
+✓ Enhanced hero section with video background and futuristic design elements
+✓ Added holographic borders and tech glow effects throughout the site
+✓ Implemented neural network line animations and floating tech elements
+✓ Enhanced AI chatbot with more human-like personality and responses
+✓ Applied black and white color scheme for text as requested
+✓ Added particle animations and gradient shifts for modern tech aesthetic
+
 ## Changelog
 
-Changelog:
-- June 24, 2025. Initial setup
+- June 25, 2025: Enhanced design with futuristic elements, video background, and improved human-centered interactions
+- June 24, 2025: Initial setup
 
 ## User Preferences
 

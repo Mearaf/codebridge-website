@@ -10,7 +10,7 @@ export default function AIChatbot() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm here to help you with any questions about our services. How can I assist you today?",
+      text: "👋 Hi there! I'm Alex, your CodeBridge assistant. I'm here to help you navigate your tech journey with clarity and confidence. What brings you here today?",
       isBot: true,
       timestamp: new Date()
     }
@@ -31,16 +31,23 @@ export default function AIChatbot() {
     setMessages(prev => [...prev, userMessage]);
     setMessage("");
 
-    // Simulate bot response
+    // Simulate bot response with more human-like responses
     setTimeout(() => {
+      const responses = [
+        "That's a great question! Based on what you've shared, I think a free consultation would be perfect to explore your options. Would you like me to help you book that?",
+        "I understand that feeling - tech can be overwhelming! The good news is that's exactly what we specialize in. Let me connect you with someone who can provide personalized guidance.",
+        "Thanks for reaching out! It sounds like you're ready to take the next step. Our team would love to chat with you about your specific situation - no pressure, just helpful conversation."
+      ];
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      
       const botResponse = {
         id: messages.length + 2,
-        text: "Thanks for your message! I'd recommend booking a free call with our team to discuss your specific needs. Would you like me to help you schedule that?",
+        text: randomResponse,
         isBot: true,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+    }, 1500);
   };
 
   return (

@@ -47,7 +47,7 @@ export default function WhoWeHelp() {
             return (
               <Card 
                 key={index}
-                className="text-center bg-zinc-900 border-gray-800 card-hover transition-all duration-300"
+                className="text-center bg-zinc-900 border-gray-800 card-hover holographic-border transition-all duration-300"
               >
                 <CardContent className="p-8">
                   <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${audience.color}`}>

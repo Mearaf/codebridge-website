@@ -61,7 +61,7 @@ export default function ServicesPreview() {
             return (
               <Card 
                 key={index}
-                className={`bg-black/70 border-gray-800 transition-all duration-500 card-hover ${service.color.split(' ')[3]}`}
+                className="bg-black/70 border-gray-800 transition-all duration-500 card-hover holographic-border"
               >
                 <CardContent className="p-10">
                   <div className={`w-24 h-24 rounded-2xl flex items-center justify-center mb-8 ${service.color}`}>

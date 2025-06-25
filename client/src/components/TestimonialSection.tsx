@@ -56,10 +56,10 @@ export default function TestimonialSection() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials?.slice(0, 2).map((testimonial) => (
-            <Card key={testimonial.id} className="bg-zinc-900 border-gray-800">
+            <Card key={testimonial.id} className="bg-zinc-900 border-gray-800 holographic-border card-hover">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4 tech-glow animate-pulse-slow">
                     <span className="text-white font-bold text-xl">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>

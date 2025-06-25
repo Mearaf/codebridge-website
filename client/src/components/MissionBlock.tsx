@@ -40,7 +40,7 @@ export default function MissionBlock() {
               return (
                 <Card 
                   key={index}
-                  className="bg-black/50 border-gray-800 hover:border-opacity-50 transition-all duration-300 card-hover"
+                  className="bg-black/50 border-gray-800 hover:border-opacity-50 transition-all duration-300 card-hover holographic-border"
                 >
                   <CardContent className="p-8">
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${value.color}`}>
