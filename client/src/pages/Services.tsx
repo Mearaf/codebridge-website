@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Footer from "@/components/Footer";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 
 export default function Services() {
   const services = [
@@ -86,7 +87,11 @@ export default function Services() {
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
+      <VideoBackgroundSection 
+        className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
+        videoOpacity={0.08}
+        showVideoControls={false}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
             Our <span className="gradient-text">Services</span>
@@ -95,7 +100,7 @@ export default function Services() {
             Three comprehensive approaches to help you bridge the gap between where you are and where you want to be with technology.
           </p>
         </div>
-      </section>
+      </VideoBackgroundSection>
 
       {/* Services Detail */}
       <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">

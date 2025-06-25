@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Link } from "wouter";
 import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, CheckCircle } from "lucide-react";
 import Footer from "@/components/Footer";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -206,7 +207,11 @@ export default function Contact() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
+      <VideoBackgroundSection 
+        className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90"
+        videoOpacity={0.06}
+        showVideoControls={false}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -346,7 +351,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </section>
+      </VideoBackgroundSection>
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
