@@ -152,35 +152,35 @@ export default function Resources() {
 
       {/* Featured Resource */}
       {featuredResource && selectedCategory === "all" && !searchTerm && (
-        <section className="pb-12 bg-black">
+        <section className="pb-12 bg-gradient-to-b from-white/90 to-gray-50/60">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold mb-6">Featured Resource</h2>
-            <Card className="bg-gradient-to-r from-zinc-900 to-zinc-800 border-gray-700">
+            <h2 className="text-2xl font-bold mb-6 text-black">Featured Resource</h2>
+            <Card className="bg-gradient-to-r from-white/95 to-gray-50/90 border-gray-400 shadow-lg">
               <CardContent className="p-8">
                 <div className="grid lg:grid-cols-3 gap-6 items-center">
                   <div className="lg:col-span-2">
                     <div className="flex items-center gap-2 mb-3">
                       {getIcon(featuredResource.type)}
-                      <Badge variant="secondary" className="bg-blue-900 text-blue-200">
+                      <Badge variant="secondary" className="bg-gray-200 text-black">
                         {featuredResource.type}
                       </Badge>
-                      <span className="text-sm text-gray-400 flex items-center gap-1">
+                      <span className="text-sm text-gray-600 flex items-center gap-1">
                         <Clock size={14} />
                         {featuredResource.readTime}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3">{featuredResource.title}</h3>
-                    <p className="text-gray-300 mb-4">{featuredResource.excerpt}</p>
+                    <h3 className="text-2xl font-bold mb-3 text-black">{featuredResource.title}</h3>
+                    <p className="text-gray-700 mb-4">{featuredResource.excerpt}</p>
                     <div className="flex flex-wrap gap-2">
                       {featuredResource.tags.map((tag, index) => (
-                        <Badge key={index} variant="outline" className="border-gray-600 text-gray-400">
+                        <Badge key={index} variant="outline" className="border-gray-400 text-gray-600">
                           {tag}
                         </Badge>
                       ))}
                     </div>
                   </div>
                   <div className="text-center">
-                    <Button className="bg-blue-500 hover:bg-blue-400 text-black font-semibold">
+                    <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
                       Read Now
                       <ExternalLink size={16} className="ml-2" />
                     </Button>
@@ -193,10 +193,10 @@ export default function Resources() {
       )}
 
       {/* Resources Grid */}
-      <section className="pb-20 bg-black">
+      <section className="pb-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold text-black">
               {searchTerm ? `Search Results (${filteredResources.length})` : 
                selectedCategory === "all" ? "All Resources" : 
                categories.find(c => c.id === selectedCategory)?.label}
@@ -204,11 +204,11 @@ export default function Resources() {
           </div>
           
           {filteredResources.length === 0 ? (
-            <Card className="bg-zinc-900 border-gray-800">
+            <Card className="bg-white/95 border-gray-400 shadow-lg">
               <CardContent className="p-12 text-center">
                 <Search className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">No resources found</h3>
-                <p className="text-gray-400">
+                <h3 className="text-lg font-semibold mb-2 text-black">No resources found</h3>
+                <p className="text-gray-700">
                   Try adjusting your search terms or browse all categories.
                 </p>
               </CardContent>
@@ -218,7 +218,7 @@ export default function Resources() {
               {filteredResources
                 .filter(r => !r.featured || selectedCategory !== "all" || searchTerm)
                 .map((resource) => (
-                <Card key={resource.id} className="bg-zinc-900 border-gray-800 card-hover transition-all duration-300">
+                <Card key={resource.id} className="bg-white/95 border-gray-400 shadow-lg hover:shadow-xl transition-all duration-300">
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">

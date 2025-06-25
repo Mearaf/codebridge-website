@@ -134,68 +134,68 @@ export default function Contact() {
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black">
+      <section className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
             Let's <span className="gradient-text">Connect</span>
           </h1>
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <p className="text-xl text-gray-700 leading-relaxed">
             Ready to start your tech journey? We'd love to hear from you.
           </p>
         </div>
       </section>
 
       {/* Contact Options */}
-      <section className="py-12 bg-black">
+      <section className="py-12 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="bg-zinc-900 border-gray-800 text-center">
+            <Card className="bg-white/95 border-gray-400 shadow-lg text-center">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="text-blue-400" size={32} />
+                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calendar className="text-black" size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Book a Free Call</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="text-xl font-bold mb-3 text-black">Book a Free Call</h3>
+                <p className="text-gray-700 mb-6">
                   30-minute conversation about your tech goals and challenges.
                 </p>
                 <Link href="/book-call">
-                  <Button className="bg-blue-500 hover:bg-blue-400 text-black font-semibold">
+                  <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
                     Schedule Call
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="bg-zinc-900 border-gray-800 text-center">
+            <Card className="bg-white/95 border-gray-400 shadow-lg text-center">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MessageCircle className="text-purple-400" size={32} />
+                <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageCircle className="text-black" size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Send a Message</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="text-xl font-bold mb-3 text-black">Send a Message</h3>
+                <p className="text-gray-700 mb-6">
                   Detailed questions or project inquiries via our contact form.
                 </p>
                 <Button 
                   onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-purple-600 hover:bg-purple-500 text-white font-semibold"
+                  className="bg-black hover:bg-gray-800 text-white font-semibold"
                 >
                   Message Us
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-zinc-900 border-gray-800 text-center">
+            <Card className="bg-white/95 border-gray-400 shadow-lg text-center">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="text-orange-400" size={32} />
+                <div className="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="text-black" size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Quick Questions</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="text-xl font-bold mb-3 text-black">Quick Questions</h3>
+                <p className="text-gray-700 mb-6">
                   Simple questions or need immediate assistance.
                 </p>
                 <Button 
                   variant="outline"
-                  className="border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white"
+                  className="border-black text-black hover:bg-black hover:text-white"
                 >
                   Email Direct
                 </Button>
@@ -210,10 +210,10 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card id="contact-form" className="bg-black/70 border-gray-800">
+            <Card id="contact-form" className="bg-white/95 border-gray-400 shadow-lg">
               <CardHeader>
-                <h2 className="text-2xl font-bold">Send Us a Message</h2>
-                <p className="text-gray-400">
+                <h2 className="text-2xl font-bold text-black">Send Us a Message</h2>
+                <p className="text-gray-700">
                   Tell us about your tech challenges and we'll get back to you within 24 hours.
                 </p>
               </CardHeader>
@@ -221,7 +221,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Your Name *</label>
+                      <label className="block text-sm font-medium mb-2 text-black">Your Name *</label>
                       <Input
                         name="name"
                         placeholder="Your Name"

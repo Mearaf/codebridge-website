@@ -102,12 +102,12 @@ export default function Testimonials() {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="pb-20 bg-black">
+      <section className="pb-20 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {isLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <Card key={i} className="bg-zinc-900 border-gray-800 animate-pulse">
+                <Card key={i} className="bg-white/95 border-gray-400 shadow-lg animate-pulse">
                   <CardContent className="p-8">
                     <div className="flex items-center mb-6">
                       <div className="w-16 h-16 bg-gray-700 rounded-full mr-4"></div>
@@ -131,11 +131,11 @@ export default function Testimonials() {
               ))}
             </div>
           ) : filteredTestimonials?.length === 0 ? (
-            <Card className="bg-zinc-900 border-gray-800">
+            <Card className="bg-white/95 border-gray-400 shadow-lg">
               <CardContent className="p-12 text-center">
                 <Search className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">No testimonials found</h3>
-                <p className="text-gray-400">
+                <h3 className="text-lg font-semibold mb-2 text-black">No testimonials found</h3>
+                <p className="text-gray-700">
                   {searchTerm ? "Try adjusting your search terms" : "No testimonials match the selected filter"}.
                 </p>
               </CardContent>
@@ -143,7 +143,7 @@ export default function Testimonials() {
           ) : (
             <>
               <div className="flex justify-between items-center mb-8">
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold text-black">
                   {searchTerm ? `Search Results (${filteredTestimonials?.length || 0})` : 
                    selectedFilter === "all" ? "All Testimonials" : 
                    filters.find(f => f.id === selectedFilter)?.label}
@@ -152,17 +152,17 @@ export default function Testimonials() {
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredTestimonials?.map((testimonial) => (
-                  <Card key={testimonial.id} className="bg-zinc-900 border-gray-800 card-hover transition-all duration-300">
+                  <Card key={testimonial.id} className="bg-white/95 border-gray-400 shadow-lg hover:shadow-xl transition-all duration-300">
                     <CardContent className="p-8">
                       <div className="flex items-center mb-6">
-                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center mr-4">
                           <span className="text-white font-bold text-xl">
                             {testimonial.name.split(' ').map(n => n[0]).join('')}
                           </span>
                         </div>
                         <div>
-                          <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                          <p className="text-gray-400">{testimonial.title}</p>
+                          <h4 className="font-bold text-lg text-black">{testimonial.name}</h4>
+                          <p className="text-gray-600">{testimonial.title}</p>
                           {testimonial.company && (
                             <p className="text-gray-500 text-sm">{testimonial.company}</p>
                           )}
@@ -170,16 +170,16 @@ export default function Testimonials() {
                       </div>
                       
                       {testimonial.featured && (
-                        <Badge className="mb-4 bg-blue-900 text-blue-200">
+                        <Badge className="mb-4 bg-gray-200 text-black">
                           Featured
                         </Badge>
                       )}
                       
-                      <blockquote className="text-gray-300 leading-relaxed mb-4">
+                      <blockquote className="text-gray-700 leading-relaxed mb-4">
                         "{testimonial.quote}"
                       </blockquote>
                       
-                      <div className="flex text-blue-400">
+                      <div className="flex text-black">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} size={16} fill="currentColor" />
                         ))}

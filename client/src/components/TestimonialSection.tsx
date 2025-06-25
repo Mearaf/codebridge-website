@@ -19,19 +19,19 @@ export default function TestimonialSection() {
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {[1, 2].map((i) => (
-              <Card key={i} className="bg-zinc-900 border-gray-800 animate-pulse">
+              <Card key={i} className="bg-white/95 border-gray-400 shadow-lg animate-pulse">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 bg-gray-700 rounded-full mr-4"></div>
+                    <div className="w-16 h-16 bg-gray-300 rounded-full mr-4"></div>
                     <div>
-                      <div className="h-4 bg-gray-700 rounded w-32 mb-2"></div>
-                      <div className="h-3 bg-gray-700 rounded w-24"></div>
+                      <div className="h-4 bg-gray-300 rounded w-32 mb-2"></div>
+                      <div className="h-3 bg-gray-300 rounded w-24"></div>
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <div className="h-4 bg-gray-700 rounded"></div>
-                    <div className="h-4 bg-gray-700 rounded"></div>
-                    <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-300 rounded"></div>
+                    <div className="h-4 bg-gray-300 rounded"></div>
+                    <div className="h-4 bg-gray-300 rounded w-3/4"></div>
                   </div>
                 </CardContent>
               </Card>
@@ -43,7 +43,7 @@ export default function TestimonialSection() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+    <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
@@ -56,26 +56,26 @@ export default function TestimonialSection() {
         
         <div className="grid md:grid-cols-2 gap-8">
           {testimonials?.slice(0, 2).map((testimonial) => (
-            <Card key={testimonial.id} className="bg-zinc-900 border-gray-800 holographic-border card-hover">
+            <Card key={testimonial.id} className="bg-white/95 border-gray-400 shadow-lg hover:shadow-xl transition-all duration-300">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4 tech-glow animate-pulse-slow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-full flex items-center justify-center mr-4">
                     <span className="text-white font-bold text-xl">
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </span>
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                    <p className="text-gray-400">{testimonial.title}</p>
+                    <h4 className="font-bold text-lg text-black">{testimonial.name}</h4>
+                    <p className="text-gray-600">{testimonial.title}</p>
                     {testimonial.company && (
                       <p className="text-gray-500 text-sm">{testimonial.company}</p>
                     )}
                   </div>
                 </div>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <p className="text-gray-700 leading-relaxed mb-4">
                   "{testimonial.quote}"
                 </p>
-                <div className="flex text-blue-400">
+                <div className="flex text-black">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
