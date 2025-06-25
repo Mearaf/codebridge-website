@@ -105,21 +105,21 @@ export default function Resources() {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-black text-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black">
+      <section className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
             Plain-English <span className="gradient-text">Tech Tips</span>
           </h1>
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <p className="text-xl text-gray-700 leading-relaxed">
             No jargon, no judgment — just practical guidance to help you make better technology decisions.
           </p>
         </div>
       </section>
 
       {/* Search and Filter */}
-      <section className="py-12 bg-black">
+      <section className="py-12 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-4 mb-8">
             <div className="relative flex-1">
@@ -128,7 +128,7 @@ export default function Resources() {
                 placeholder="Search articles, guides, and videos..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                className="pl-10 bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
               />
             </div>
             <div className="flex gap-2 flex-wrap">
@@ -138,8 +138,8 @@ export default function Resources() {
                   variant={selectedCategory === category.id ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category.id)}
                   className={selectedCategory === category.id 
-                    ? "bg-blue-500 hover:bg-blue-400 text-black"
-                    : "border-gray-600 text-gray-300 hover:bg-gray-800"
+                    ? "bg-black hover:bg-gray-800 text-white"
+                    : "border-gray-400 text-black hover:bg-gray-100"
                   }
                 >
                   {category.label}

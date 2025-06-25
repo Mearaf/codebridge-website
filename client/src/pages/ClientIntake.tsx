@@ -121,27 +121,27 @@ export default function ClientIntake() {
   }
 
   return (
-    <div className="pt-16 min-h-screen bg-black text-white">
+    <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <section className="py-12 bg-gradient-to-br from-black via-zinc-900 to-black">
+      <section className="py-12 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-black">
             Client <span className="gradient-text">Intake</span> Form
           </h1>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-gray-700">
             Help us understand your needs so we can provide the best guidance
           </p>
         </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-12 bg-black">
+      <section className="py-12 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-zinc-900 border-gray-800">
+          <Card className="bg-white/95 border-gray-400 shadow-lg">
             <CardHeader>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold">Step {currentStep} of {totalSteps}</h2>
-                <span className="text-sm text-gray-400">{Math.round(progress)}% Complete</span>
+                <h2 className="text-xl font-bold text-black">Step {currentStep} of {totalSteps}</h2>
+                <span className="text-sm text-gray-600">{Math.round(progress)}% Complete</span>
               </div>
               <Progress value={progress} className="w-full" />
             </CardHeader>
@@ -150,25 +150,25 @@ export default function ClientIntake() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Let's start with the basics</h3>
+                    <h3 className="text-lg font-semibold mb-4 text-black">Let's start with the basics</h3>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Your Name *</label>
+                    <label className="block text-sm font-medium mb-2 text-black">Your Name *</label>
                     <Input
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
                       placeholder="Enter your full name"
-                      className="bg-black border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                      className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Email Address *</label>
+                    <label className="block text-sm font-medium mb-2 text-black">Email Address *</label>
                     <Input
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange("email", e.target.value)}
                       placeholder="your@email.com"
-                      className="bg-black border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                      className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                     />
                   </div>
                   <div>

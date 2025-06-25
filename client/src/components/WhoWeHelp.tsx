@@ -7,25 +7,25 @@ export default function WhoWeHelp() {
       icon: Rocket,
       title: "Solo Founders",
       description: "Entrepreneurs who need tech that scales with their vision.",
-      color: "text-blue-400 bg-blue-500/20"
+      color: "text-black bg-gray-200"
     },
     {
       icon: Store,
       title: "Small Business",
       description: "Local businesses ready to compete in the digital age.",
-      color: "text-purple-400 bg-purple-500/20"
+      color: "text-black bg-gray-300"
     },
     {
       icon: HandHeart,
       title: "Nonprofits",
       description: "Mission-driven organizations maximizing impact through technology.",
-      color: "text-orange-400 bg-orange-500/20"
+      color: "text-black bg-gray-400"
     },
     {
       icon: Users,
       title: "Community Leaders",
       description: "Local leaders who want more control and clarity in their systems.",
-      color: "text-blue-400 bg-blue-500/20"
+      color: "text-black bg-gray-500"
     }
   ];
 
@@ -47,14 +47,14 @@ export default function WhoWeHelp() {
             return (
               <Card 
                 key={index}
-                className="text-center bg-zinc-900 border-gray-800 card-hover holographic-border transition-all duration-300"
+                className="text-center bg-white/95 border-gray-400 shadow-lg transition-all duration-300 hover:shadow-xl"
               >
                 <CardContent className="p-8">
                   <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${audience.color}`}>
                     <IconComponent size={36} />
                   </div>
-                  <h3 className="text-xl font-bold mb-4">{audience.title}</h3>
-                  <p className="text-gray-400">{audience.description}</p>
+                  <h3 className="text-xl font-bold mb-4 text-black">{audience.title}</h3>
+                  <p className="text-gray-700">{audience.description}</p>
                 </CardContent>
               </Card>
             );
