@@ -1,13 +1,13 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
-import TechVideoBackground from "@/components/TechVideoBackground";
+import ReliableVideoBackground from "@/components/ReliableVideoBackground";
 
 export default function HeroSection() {
   return (
-    <TechVideoBackground 
+    <ReliableVideoBackground 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-      opacity={0.3}
+      opacity={0.25}
     >
       
       {/* Soft Background Pattern */}
@@ -69,6 +69,6 @@ export default function HeroSection() {
       </div>
       
 
-    </TechVideoBackground>
+    </ReliableVideoBackground>
   );
 }
