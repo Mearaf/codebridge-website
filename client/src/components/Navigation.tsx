@@ -57,7 +57,7 @@ export default function Navigation() {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-blue-400"
+              className="text-black hover:text-gray-600"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -67,7 +67,7 @@ export default function Navigation() {
         {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-black/95">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-sm border-t border-gray-300">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -75,15 +75,15 @@ export default function Navigation() {
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
                     location === item.path
-                      ? "text-blue-400 bg-gray-900"
-                      : "text-gray-300 hover:text-blue-400 hover:bg-gray-900"
+                      ? "text-black bg-gray-100 font-semibold"
+                      : "text-gray-600 hover:text-black hover:bg-gray-50"
                   }`}
                 >
                   {item.label}
                 </Link>
               ))}
               <Link href="/book-call" onClick={() => setIsOpen(false)}>
-                <Button className="w-full mt-4 bg-blue-500 hover:bg-blue-400 text-black font-semibold">
+                <Button className="w-full mt-4 bg-black hover:bg-gray-800 text-white font-semibold">
                   Book a Free Call
                 </Button>
               </Link>

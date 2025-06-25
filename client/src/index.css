@@ -102,33 +102,33 @@
     animation: gradient-shift 8s ease-in-out infinite;
   }
   
-  /* Reset and ensure all text is white by default */
+  /* Reset and ensure all text is black by default */
   body, html {
-    color: white;
+    color: black;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: white !important;
+    color: black !important;
   }
   
-  /* Ensure normal text stays white even when next to gradient text */
+  /* Ensure normal text stays black even when next to gradient text */
   h1 > span:not(.gradient-text),
   h2 > span:not(.gradient-text),
   h3 > span:not(.gradient-text) {
-    color: white !important;
+    color: black !important;
   }
   
   /* Override any text that might be affected */
-  .text-white {
-    color: white !important;
+  .text-black {
+    color: black !important;
   }
   
   .particle-bg {
     background-image: 
-      radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.01) 0%, transparent 50%);
     animation: particle-drift 20s linear infinite;
   }
 

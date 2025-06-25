@@ -95,7 +95,7 @@ export default function AIChatbot() {
               <Button
                 type="submit"
                 size="icon"
-                className="bg-blue-500 hover:bg-blue-400 text-black"
+                className="bg-black hover:bg-gray-800 text-white"
               >
                 <Send size={16} />
               </Button>
