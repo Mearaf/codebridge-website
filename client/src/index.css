@@ -208,6 +208,18 @@
   100% { background-position: 100% 100%, 0% 0%, 0% 100%, 0% 100%; }
 }
 
+.tech-particles-subtle {
+  animation: particle-drift 30s ease-in-out infinite;
+}
+
+.tech-particles-moderate {
+  animation: particle-drift 20s ease-in-out infinite, pulse 4s ease-in-out infinite;
+}
+
+.tech-particles-engaging {
+  animation: particle-drift 15s ease-in-out infinite, pulse 2s ease-in-out infinite;
+}
+
 @keyframes neural-flow {
   0% { stroke-dasharray: 0 100; }
   50% { stroke-dasharray: 50 50; }
