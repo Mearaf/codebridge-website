@@ -22,10 +22,10 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="relative flex items-center">
             <BridgeIcon 
-              className="absolute w-16 h-12 text-gray-600 -left-1 -top-1" 
+              className="absolute w-32 h-8 text-gray-700 -left-2 top-2" 
               isBackground={true}
             />
-            <div className="relative z-10 text-2xl font-bold">
+            <div className="relative z-10 text-2xl font-bold px-2">
               <span className="text-black">Code</span>
               <span className="gradient-text">Bridge</span>
             </div>
@@ -75,10 +75,10 @@ export default function Navigation() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-sm border-t border-gray-300">
               <div className="relative flex items-center justify-center py-2 mb-2">
                 <BridgeIcon 
-                  className="absolute w-14 h-10 text-gray-600" 
+                  className="absolute w-28 h-7 text-gray-700" 
                   isBackground={true}
                 />
-                <div className="relative z-10 text-xl font-bold">
+                <div className="relative z-10 text-xl font-bold px-2">
                   <span className="text-black">Code</span>
                   <span className="gradient-text">Bridge</span>
                 </div>
