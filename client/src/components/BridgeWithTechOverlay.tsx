@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Code, Wifi, Database, Cloud, Smartphone, Monitor, Cpu, Network } from "lucide-react";
-import MouseEffectWrapper from "./MouseEffectWrapper";
+// MouseEffectWrapper now applied globally
 
 interface BridgeWithTechOverlayProps {
   children: React.ReactNode;
@@ -75,7 +75,7 @@ export default function BridgeWithTechOverlay({
   }, []);
 
   return (
-    <MouseEffectWrapper className={`relative overflow-hidden ${className}`}>
+    <div className={`relative overflow-hidden ${className}`}>
       {/* Bridge Video Background */}
       {!videoError && (
         <video
@@ -172,6 +172,6 @@ export default function BridgeWithTechOverlay({
       <div className="relative z-20">
         {children}
       </div>
-    </MouseEffectWrapper>
+    </div>
   );
 }
