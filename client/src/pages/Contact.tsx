@@ -206,7 +206,7 @@ export default function Contact() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -227,50 +227,50 @@ export default function Contact() {
                         placeholder="Your Name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                        className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email Address *</label>
+                      <label className="block text-sm font-medium mb-2 text-black">Email Address *</label>
                       <Input
                         name="email"
                         type="email"
                         placeholder="your@email.com"
                         value={formData.email}
                         onChange={handleChange}
-                        className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                        className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                         required
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Subject *</label>
+                    <label className="block text-sm font-medium mb-2 text-black">Subject *</label>
                     <Input
                       name="subject"
                       placeholder="What's this about?"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                      className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Message *</label>
+                    <label className="block text-sm font-medium mb-2 text-black">Message *</label>
                     <Textarea
                       name="message"
                       rows={6}
                       placeholder="Tell us about your tech challenges, goals, or questions..."
                       value={formData.message}
                       onChange={handleChange}
-                      className="bg-zinc-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 resize-none"
+                      className="bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black resize-none"
                       required
                     />
                   </div>
                   <Button
                     type="submit"
                     disabled={contactMutation.isPending}
-                    className="w-full bg-blue-500 hover:bg-blue-400 text-black font-semibold py-4"
+                    className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-4"
                   >
                     {contactMutation.isPending ? "Sending..." : "Get Clarity"}
                   </Button>
@@ -281,36 +281,36 @@ export default function Contact() {
             {/* Contact Info and FAQ */}
             <div className="space-y-8">
               {/* Contact Information */}
-              <Card className="bg-black/70 border-gray-800">
+              <Card className="bg-white/95 border-gray-400 shadow-lg">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-6">Get in Touch</h3>
+                  <h3 className="text-xl font-bold mb-6 text-black">Get in Touch</h3>
                   <div className="space-y-4">
                     <div className="flex items-center">
-                      <Mail className="text-blue-400 mr-4" size={20} />
+                      <Mail className="text-black mr-4" size={20} />
                       <div>
-                        <p className="text-white">Email</p>
-                        <p className="text-gray-300">hello@codebridge.tech</p>
+                        <p className="text-black">Email</p>
+                        <p className="text-gray-700">hello@codebridge.tech</p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <Phone className="text-blue-400 mr-4" size={20} />
+                      <Phone className="text-black mr-4" size={20} />
                       <div>
-                        <p className="text-white">Phone</p>
-                        <p className="text-gray-300">(555) 123-4567</p>
+                        <p className="text-black">Phone</p>
+                        <p className="text-gray-700">(555) 123-4567</p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <Clock className="text-blue-400 mr-4" size={20} />
+                      <Clock className="text-black mr-4" size={20} />
                       <div>
-                        <p className="text-white">Response Time</p>
-                        <p className="text-gray-300">Within 24 hours</p>
+                        <p className="text-black">Response Time</p>
+                        <p className="text-gray-700">Within 24 hours</p>
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <MapPin className="text-blue-400 mr-4" size={20} />
+                      <MapPin className="text-black mr-4" size={20} />
                       <div>
-                        <p className="text-white">Service Area</p>
-                        <p className="text-gray-300">Remote & Local (US)</p>
+                        <p className="text-black">Service Area</p>
+                        <p className="text-gray-700">Remote & Local (US)</p>
                       </div>
                     </div>
                   </div>
@@ -318,24 +318,24 @@ export default function Contact() {
               </Card>
 
               {/* Quick Links */}
-              <Card className="bg-black/70 border-gray-800">
+              <Card className="bg-white/95 border-gray-400 shadow-lg">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
+                  <h3 className="text-xl font-bold mb-6 text-black">Quick Actions</h3>
                   <div className="space-y-4">
                     <Link href="/book-call">
-                      <Button className="w-full bg-purple-600 hover:bg-purple-500 text-white font-semibold justify-start">
+                      <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold justify-start">
                         <Calendar className="mr-3" size={16} />
                         Schedule Free Consultation
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-black hover:text-white justify-start">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-black hover:text-white justify-start">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
