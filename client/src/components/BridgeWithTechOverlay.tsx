@@ -60,8 +60,8 @@ export default function BridgeWithTechOverlay({
       setVideoLoaded(true);
     };
 
-    // Skip video entirely and focus on strong visual bridge background
-    setVideoError(true); // Force fallback to image
+    // Use the specific bridge video with tech overlay
+    video.src = "https://www.shutterstock.com/shutterstock/videos/3761711571/preview/stock-footage-animation-of-digital-icons-overlaying-business-and-education-concepts-on-tower-bridge-technology.webm";
     
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('error', handleError);
@@ -82,9 +82,9 @@ export default function BridgeWithTechOverlay({
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ 
-            opacity: videoLoaded ? 0.3 : 0,
+            opacity: videoLoaded ? 0.6 : 0,
             transition: 'opacity 2s ease-in-out',
-            filter: 'brightness(0.5) contrast(1.1) grayscale(1) blur(0.5px)'
+            filter: 'brightness(0.7) contrast(1.0) grayscale(0.6)'
           }}
           muted
           loop
@@ -99,29 +99,31 @@ export default function BridgeWithTechOverlay({
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
-          filter: 'brightness(0.6) contrast(1.1) grayscale(0.8)',
-          opacity: 0.4
+          filter: 'brightness(0.5) contrast(1.2) grayscale(0.9)',
+          opacity: videoError ? 0.4 : 0.2
         }}
       />
 
-      {/* Tech Icons Overlay */}
-      <div className="absolute inset-0">
-        {techIcons.map(({ Icon, position, delay }, index) => (
-          <div
-            key={index}
-            className="absolute animate-pulse"
-            style={{
-              ...position,
-              animationDelay: `${delay}s`,
-              animationDuration: '4s'
-            }}
-          >
-            <div className="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-2xl border border-black/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 shadow-xl">
-              <Icon className="w-8 h-8 text-black" />
+      {/* Tech Icons Overlay - Only show if video doesn't have built-in tech overlay */}
+      {videoError && (
+        <div className="absolute inset-0">
+          {techIcons.map(({ Icon, position, delay }, index) => (
+            <div
+              key={index}
+              className="absolute animate-pulse"
+              style={{
+                ...position,
+                animationDelay: `${delay}s`,
+                animationDuration: '4s'
+              }}
+            >
+              <div className="w-16 h-16 bg-white/30 backdrop-blur-sm rounded-2xl border border-black/20 flex items-center justify-center hover:bg-white/40 transition-all duration-300 shadow-xl">
+                <Icon className="w-8 h-8 text-black" />
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Circuit Pattern Overlay */}
       <div 
@@ -166,10 +168,10 @@ export default function BridgeWithTechOverlay({
         style={{
           background: `
             radial-gradient(circle at center, 
-              rgba(255,255,255,0.7) 0%, 
-              rgba(255,255,255,0.5) 40%,
-              rgba(255,255,255,0.3) 70%,
-              rgba(255,255,255,0.6) 100%)
+              rgba(255,255,255,0.8) 0%, 
+              rgba(255,255,255,0.6) 40%,
+              rgba(255,255,255,0.4) 70%,
+              rgba(255,255,255,0.7) 100%)
           `
         }}
       />
