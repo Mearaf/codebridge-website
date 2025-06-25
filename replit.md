@@ -22,9 +22,9 @@ CodeBridge is a full-stack web application for a technology consulting company t
 
 ### Data Storage Solutions
 - **ORM**: Drizzle ORM for type-safe database operations
-- **Database**: PostgreSQL (configured for production)
+- **Database**: PostgreSQL with Neon serverless connection
 - **Migration**: Drizzle Kit for schema migrations
-- **Development**: In-memory storage fallback for development
+- **Storage**: DatabaseStorage class replaces in-memory storage
 
 ## Key Components
 

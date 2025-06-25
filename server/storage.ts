@@ -15,6 +15,8 @@ import {
   type Testimonial,
   type InsertTestimonial
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -35,149 +37,78 @@ export interface IStorage {
   getFeaturedTestimonials(): Promise<Testimonial[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<number, User>;
-  private contacts: Map<number, Contact>;
-  private emailSignups: Map<number, EmailSignup>;
-  private clientIntakes: Map<number, ClientIntake>;
-  private testimonials: Map<number, Testimonial>;
-  private currentId: number;
-
-  constructor() {
-    this.users = new Map();
-    this.contacts = new Map();
-    this.emailSignups = new Map();
-    this.clientIntakes = new Map();
-    this.testimonials = new Map();
-    this.currentId = 1;
-    
-    // Add some sample testimonials
-    this.seedTestimonials();
-  }
-
-  private seedTestimonials() {
-    const sampleTestimonials: InsertTestimonial[] = [
-      {
-        name: "Sarah Johnson",
-        title: "Small Business Owner",
-        company: "Local Boutique",
-        quote: "CodeBridge didn't just modernize our systems — they transformed how our entire team thinks about technology. We went from avoiding new tools to actively seeking ways to improve our processes.",
-        rating: 5,
-        featured: true
-      },
-      {
-        name: "Michael Chen",
-        title: "Nonprofit Director",
-        company: "Community Impact Fund",
-        quote: "I was completely overwhelmed by all the tech options out there. CodeBridge helped us find exactly what we needed and taught us how to use it effectively. Now we're serving more people than ever.",
-        rating: 5,
-        featured: true
-      },
-      {
-        name: "Emily Rodriguez",
-        title: "Solo Founder",
-        company: "Creative Solutions",
-        quote: "The team at CodeBridge made technology feel approachable for the first time. They didn't just implement solutions — they empowered me to understand and manage them myself.",
-        rating: 5,
-        featured: false
-      }
-    ];
-
-    sampleTestimonials.forEach(testimonial => {
-      this.createTestimonial(testimonial);
-    });
-  }
-
+export class DatabaseStorage implements IStorage {
   async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
     return user;
   }
 
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    const id = this.currentId++;
-    const contact: Contact = { 
-      ...insertContact, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.contacts.set(id, contact);
+    const [contact] = await db
+      .insert(contacts)
+      .values(insertContact)
+      .returning();
     return contact;
   }
 
   async getContacts(): Promise<Contact[]> {
-    return Array.from(this.contacts.values()).sort((a, b) => 
-      (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
-    );
+    return await db.select().from(contacts).orderBy(contacts.createdAt);
   }
 
   async createEmailSignup(insertSignup: InsertEmailSignup): Promise<EmailSignup> {
-    const id = this.currentId++;
-    const signup: EmailSignup = { 
-      ...insertSignup, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.emailSignups.set(id, signup);
+    const [signup] = await db
+      .insert(emailSignups)
+      .values(insertSignup)
+      .returning();
     return signup;
   }
 
   async getEmailSignups(): Promise<EmailSignup[]> {
-    return Array.from(this.emailSignups.values()).sort((a, b) => 
-      (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
-    );
+    return await db.select().from(emailSignups).orderBy(emailSignups.createdAt);
   }
 
   async createClientIntake(insertIntake: InsertClientIntake): Promise<ClientIntake> {
-    const id = this.currentId++;
-    const intake: ClientIntake = { 
-      ...insertIntake, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.clientIntakes.set(id, intake);
+    const [intake] = await db
+      .insert(clientIntakes)
+      .values(insertIntake)
+      .returning();
     return intake;
   }
 
   async getClientIntakes(): Promise<ClientIntake[]> {
-    return Array.from(this.clientIntakes.values()).sort((a, b) => 
-      (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
-    );
+    return await db.select().from(clientIntakes).orderBy(clientIntakes.createdAt);
   }
 
   async createTestimonial(insertTestimonial: InsertTestimonial): Promise<Testimonial> {
-    const id = this.currentId++;
-    const testimonial: Testimonial = { 
-      ...insertTestimonial, 
-      id, 
-      createdAt: new Date() 
-    };
-    this.testimonials.set(id, testimonial);
+    const [testimonial] = await db
+      .insert(testimonials)
+      .values(insertTestimonial)
+      .returning();
     return testimonial;
   }
 
   async getTestimonials(): Promise<Testimonial[]> {
-    return Array.from(this.testimonials.values()).sort((a, b) => 
-      (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0)
-    );
+    return await db.select().from(testimonials).orderBy(testimonials.createdAt);
   }
 
   async getFeaturedTestimonials(): Promise<Testimonial[]> {
-    return Array.from(this.testimonials.values())
-      .filter(t => t.featured)
-      .sort((a, b) => (b.createdAt?.getTime() || 0) - (a.createdAt?.getTime() || 0));
+    return await db.select().from(testimonials)
+      .where(eq(testimonials.featured, true))
+      .orderBy(testimonials.createdAt);
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
