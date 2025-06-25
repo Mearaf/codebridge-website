@@ -59,6 +59,103 @@ export default function About() {
         </div>
       </section>
 
+      {/* Who We Help - Business Examples */}
+      <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Businesses We Transform</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              From corner cafes to growing nonprofits, we help diverse businesses modernize their operations and reach their digital potential.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Restaurants & Cafes</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Online ordering systems, digital menus, customer loyalty programs, and social media management.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Went from phone orders only to 60% online sales"
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Healthcare Practices</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Patient portals, appointment scheduling, secure communications, and electronic health records integration.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Reduced administrative work by 40%"
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Nonprofit Organizations</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Donor management systems, volunteer coordination platforms, grant application tracking, and impact reporting.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Increased donations by 150% in first year"
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Retail & E-commerce</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Online stores, inventory management, customer relationship systems, and multi-channel marketing automation.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Expanded to online sales in 3 weeks"
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Professional Services</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Client management systems, automated billing, document workflows, and professional websites with booking.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Streamlined client onboarding by 70%"
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white/80 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Educational Institutions</h3>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Learning management systems, student portals, parent communication platforms, and administrative automation.
+                </p>
+                <div className="text-sm text-gray-600 font-medium">
+                  "Improved parent engagement by 200%"
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-lg text-gray-700 mb-6">
+              Don't see your industry? We work with businesses of all types and sizes.
+            </p>
+            <Link to="/contact">
+              <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg">
+                Tell Us About Your Business
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
