@@ -20,9 +20,12 @@ export default function Navigation() {
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="flex items-center space-x-2">
-            <BridgeIcon className="w-7 h-7 text-black" />
-            <div className="text-2xl font-bold">
+          <Link href="/" className="relative flex items-center">
+            <BridgeIcon 
+              className="absolute w-16 h-12 text-gray-600 -left-1 -top-1" 
+              isBackground={true}
+            />
+            <div className="relative z-10 text-2xl font-bold">
               <span className="text-black">Code</span>
               <span className="gradient-text">Bridge</span>
             </div>
@@ -70,6 +73,16 @@ export default function Navigation() {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-sm border-t border-gray-300">
+              <div className="relative flex items-center justify-center py-2 mb-2">
+                <BridgeIcon 
+                  className="absolute w-14 h-10 text-gray-600" 
+                  isBackground={true}
+                />
+                <div className="relative z-10 text-xl font-bold">
+                  <span className="text-black">Code</span>
+                  <span className="gradient-text">Bridge</span>
+                </div>
+              </div>
               {navItems.map((item) => (
                 <Link
                   key={item.path}
