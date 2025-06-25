@@ -60,8 +60,8 @@ export default function BridgeWithTechOverlay({
       setVideoLoaded(true);
     };
 
-    // Use the specific bridge video with tech overlay
-    video.src = "https://www.shutterstock.com/shutterstock/videos/3761711571/preview/stock-footage-animation-of-digital-icons-overlaying-business-and-education-concepts-on-tower-bridge-technology.webm";
+    // Use the Golden Bridge from Vietnam
+    video.src = "https://www.shutterstock.com/shutterstock/videos/3699595909/preview/stock-footage-the-stunning-golden-bridge-at-ba-na-hills-vietnam-is-held-aloft-by-the-intricately-designed.webm";
     
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('error', handleError);
@@ -82,9 +82,9 @@ export default function BridgeWithTechOverlay({
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ 
-            opacity: videoLoaded ? 0.6 : 0,
+            opacity: videoLoaded ? 0.5 : 0,
             transition: 'opacity 2s ease-in-out',
-            filter: 'brightness(0.7) contrast(1.0) grayscale(0.6)'
+            filter: 'brightness(0.6) contrast(1.1) grayscale(0.8)'
           }}
           muted
           loop
@@ -104,8 +104,8 @@ export default function BridgeWithTechOverlay({
         }}
       />
 
-      {/* Tech Icons Overlay - Only show if video doesn't have built-in tech overlay */}
-      {videoError && (
+      {/* Tech Icons Overlay - Show for Golden Bridge since it doesn't have tech overlay */}
+      {!videoError && (
         <div className="absolute inset-0">
           {techIcons.map(({ Icon, position, delay }, index) => (
             <div
