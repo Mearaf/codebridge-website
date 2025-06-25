@@ -74,7 +74,7 @@ export default function EmailSignup() {
               <Button
                 type="submit"
                 disabled={signupMutation.isPending}
-                className="bg-black hover:bg-gray-800 text-white font-semibold whitespace-nowrap"
+                className="whitespace-nowrap"
               >
                 {signupMutation.isPending ? "Subscribing..." : "Subscribe Now"}
               </Button>
