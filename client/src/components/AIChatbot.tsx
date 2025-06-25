@@ -107,7 +107,7 @@ export default function AIChatbot() {
       {/* Chat Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-blue-500 hover:bg-blue-400 text-black rounded-full p-4 shadow-lg tech-glow animate-pulse-slow"
+        className="bg-black hover:bg-gray-800 text-white rounded-full p-4 shadow-lg animate-pulse-gentle"
         size="icon"
       >
         <MessageCircle size={24} />
