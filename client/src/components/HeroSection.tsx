@@ -1,11 +1,11 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
-import BridgeVideoBackground from "@/components/BridgeVideoBackground";
+import BridgeWithTechOverlay from "@/components/BridgeWithTechOverlay";
 
 export default function HeroSection() {
   return (
-    <BridgeVideoBackground 
+    <BridgeWithTechOverlay 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
     >
       
@@ -61,6 +61,6 @@ export default function HeroSection() {
       </div>
       
 
-    </BridgeVideoBackground>
+    </BridgeWithTechOverlay>
   );
 }
