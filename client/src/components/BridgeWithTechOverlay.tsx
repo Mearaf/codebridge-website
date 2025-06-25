@@ -60,8 +60,14 @@ export default function BridgeWithTechOverlay({
       setVideoLoaded(true);
     };
 
-    // Use a working bridge video - this is a generic video that should work
-    video.src = "https://www.w3schools.com/html/mov_bbb.mp4";
+    // Try different bridge video sources
+    const bridgeVideos = [
+      "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+    ];
+    
+    video.src = bridgeVideos[0];
     
     video.addEventListener('loadeddata', handleLoadedData);
     video.addEventListener('error', handleError);
@@ -82,9 +88,9 @@ export default function BridgeWithTechOverlay({
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ 
-            opacity: videoLoaded ? 0.2 : 0,
+            opacity: videoLoaded ? 0.3 : 0,
             transition: 'opacity 2s ease-in-out',
-            filter: 'brightness(0.4) contrast(1.2) grayscale(0.8) blur(1px)'
+            filter: 'brightness(0.5) contrast(1.1) grayscale(1) blur(0.5px)'
           }}
           muted
           loop
@@ -99,8 +105,8 @@ export default function BridgeWithTechOverlay({
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
-          filter: 'brightness(0.3) contrast(1.3) grayscale(1)',
-          opacity: videoError ? 0.25 : 0.15
+          filter: 'brightness(0.4) contrast(1.2) grayscale(1)',
+          opacity: videoError ? 0.3 : 0.2
         }}
       />
 
@@ -116,8 +122,8 @@ export default function BridgeWithTechOverlay({
               animationDuration: '4s'
             }}
           >
-            <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all duration-300">
-              <Icon className="w-6 h-6 text-black/60" />
+            <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-xl border border-black/10 flex items-center justify-center hover:bg-white/30 transition-all duration-300 shadow-lg">
+              <Icon className="w-7 h-7 text-black/80" />
             </div>
           </div>
         ))}
@@ -166,10 +172,10 @@ export default function BridgeWithTechOverlay({
         style={{
           background: `
             radial-gradient(circle at center, 
-              rgba(255,255,255,0.9) 0%, 
-              rgba(255,255,255,0.7) 40%,
-              rgba(255,255,255,0.5) 70%,
-              rgba(255,255,255,0.8) 100%)
+              rgba(255,255,255,0.85) 0%, 
+              rgba(255,255,255,0.65) 40%,
+              rgba(255,255,255,0.45) 70%,
+              rgba(255,255,255,0.75) 100%)
           `
         }}
       />
