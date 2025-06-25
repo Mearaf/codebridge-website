@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import BridgeVideoBackground from "@/components/BridgeVideoBackground";
 import MissionBlock from "@/components/MissionBlock";
 import WhoWeHelp from "@/components/WhoWeHelp";
 import ServicesPreview from "@/components/ServicesPreview";

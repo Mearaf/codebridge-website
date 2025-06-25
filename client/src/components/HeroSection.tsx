@@ -1,13 +1,12 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
-import ReliableVideoBackground from "@/components/ReliableVideoBackground";
+import BridgeVideoBackground from "@/components/BridgeVideoBackground";
 
 export default function HeroSection() {
   return (
-    <ReliableVideoBackground 
+    <BridgeVideoBackground 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-      opacity={0.25}
     >
       
       {/* Soft Background Pattern */}
@@ -62,6 +61,6 @@ export default function HeroSection() {
       </div>
       
 
-    </ReliableVideoBackground>
+    </BridgeVideoBackground>
   );
 }
