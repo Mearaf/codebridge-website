@@ -37,19 +37,12 @@ export default function HeroSection() {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/book-call">
-            <Button 
-              size="lg" 
-              className="bg-black hover:bg-gray-800 text-white font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300 shadow-lg"
-            >
+            <Button size="lg">
               Book a Free Call
             </Button>
           </Link>
           <Link href="/about">
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-2 border-black text-black hover:bg-black hover:text-white font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300"
-            >
+            <Button variant="outline" size="lg">
               Learn More
             </Button>
           </Link>

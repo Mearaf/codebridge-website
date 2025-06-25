@@ -139,7 +139,7 @@ export default function ContactSection() {
                   We'll meet you wherever you are and help you move forward — no pressure.
                 </p>
                 <Link href="/book-call">
-                  <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
+                  <Button>
                     Schedule Now
                   </Button>
                 </Link>

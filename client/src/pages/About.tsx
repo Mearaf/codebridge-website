@@ -126,12 +126,12 @@ export default function About() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-call">
-              <Button size="lg" className="bg-black hover:bg-gray-800 text-white font-semibold px-8 py-4">
+              <Button size="lg">
                 Book a Free Call
               </Button>
             </Link>
             <Link href="/services">
-              <Button variant="outline" size="lg" className="border-black text-black hover:bg-black hover:text-white px-8 py-4">
+              <Button variant="outline" size="lg">
                 Explore Our Services
               </Button>
             </Link>

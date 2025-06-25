@@ -133,7 +133,7 @@ export default function Services() {
                     </div>
                     
                     <Link href="/book-call">
-                      <Button className={`${service.buttonColor} font-semibold`}>
+                      <Button>
                         Get Started <ArrowRight size={16} className="ml-2" />
                       </Button>
                     </Link>

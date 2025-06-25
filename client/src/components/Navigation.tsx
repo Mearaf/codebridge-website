@@ -51,7 +51,7 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <Link href="/book-call">
-              <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
+              <Button>
                 Book a Free Call
               </Button>
             </Link>
@@ -98,7 +98,7 @@ export default function Navigation() {
                 </Link>
               ))}
               <Link href="/book-call" onClick={() => setIsOpen(false)}>
-                <Button className="w-full mt-4 bg-black hover:bg-gray-800 text-white font-semibold">
+                <Button className="w-full mt-4">
                   Book a Free Call
                 </Button>
               </Link>

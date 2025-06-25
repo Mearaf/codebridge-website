@@ -194,10 +194,7 @@ export default function Contact() {
                 <p className="text-gray-700 mb-6">
                   Simple questions or need immediate assistance.
                 </p>
-                <Button 
-                  variant="outline"
-                  className="border-black text-black hover:bg-black hover:text-white transition-colors duration-200"
-                >
+                <Button variant="outline">
                   Email Direct
                 </Button>
               </CardContent>
@@ -329,19 +326,19 @@ export default function Contact() {
                   <h3 className="text-xl font-bold mb-6 text-black">Quick Actions</h3>
                   <div className="space-y-6">
                     <Link href="/book-call">
-                      <Button className="w-full bg-black hover:bg-gray-800 text-white font-semibold justify-start">
+                      <Button className="w-full justify-start">
                         <Calendar className="mr-3" size={16} />
                         Schedule Free Consultation
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-100 hover:text-black justify-start transition-colors duration-200">
+                      <Button variant="outline" className="w-full justify-start">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-100 hover:text-black justify-start transition-colors duration-200">
+                      <Button variant="outline" className="w-full justify-start">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
