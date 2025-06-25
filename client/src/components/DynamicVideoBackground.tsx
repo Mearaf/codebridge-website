@@ -30,13 +30,26 @@ export default function DynamicVideoBackground({
         setIsPlaying(true);
       }).catch((error) => {
         console.log('Video autoplay prevented:', error);
+        // Fallback: show the video element anyway
+        setVideoLoaded(true);
       });
+    };
+
+    const handleLoadStart = () => {
+      console.log('Video loading started:', currentVideo.src);
+    };
+
+    const handleError = (e: Event) => {
+      console.log('Video error:', e);
+      setVideoLoaded(false);
     };
 
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
 
     video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('loadstart', handleLoadStart);
+    video.addEventListener('error', handleError);
     video.addEventListener('play', handlePlay);
     video.addEventListener('pause', handlePause);
 
@@ -46,6 +59,8 @@ export default function DynamicVideoBackground({
 
     return () => {
       video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('loadstart', handleLoadStart);
+      video.removeEventListener('error', handleError);
       video.removeEventListener('play', handlePlay);
       video.removeEventListener('pause', handlePause);
     };
@@ -85,9 +100,26 @@ export default function DynamicVideoBackground({
     setIsMuted(video.muted);
   };
 
-  // Don't render if no video is selected
+  // Always show debug info and fallback if needed
   if (!currentVideo || !isVideoActive) {
-    return null;
+    return (
+      <div className={`absolute inset-0 overflow-hidden ${className}`}>
+        {/* Debug Info */}
+        {process.env.NODE_ENV === 'development' && showControls && (
+          <div className="absolute top-4 left-4 bg-red-800/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs">
+            <div className="font-semibold mb-2">No Video Active</div>
+            <div>Current Video: {currentVideo?.id || 'None'}</div>
+            <div>Is Active: {isVideoActive ? 'Yes' : 'No'}</div>
+            <div className="mt-2 pt-2 border-t border-white/20">
+              <div>Time: {userBehavior.timeOnPage}s</div>
+              <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
+              <div>Interactions: {userBehavior.interactionCount}</div>
+              <div>Idle: {userBehavior.idleTime}s</div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -140,22 +172,22 @@ export default function DynamicVideoBackground({
         </div>
       )}
 
-      {/* Debug Info (only in development) */}
-      {process.env.NODE_ENV === 'development' && showControls && (
-        <div className="absolute top-4 left-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs">
-          <div className="font-semibold mb-2">Video Behavior Debug</div>
-          <div>Video: {currentVideo.id}</div>
-          <div>Context: {currentVideo.context}</div>
-          <div>Intensity: {currentVideo.intensity}</div>
-          <div>Trigger: {currentVideo.trigger}</div>
-          <div className="mt-2 pt-2 border-t border-white/20">
-            <div>Time: {userBehavior.timeOnPage}s</div>
-            <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
-            <div>Interactions: {userBehavior.interactionCount}</div>
-            <div>Idle: {userBehavior.idleTime}s</div>
-          </div>
+      {/* Debug Info (always visible for testing) */}
+      <div className="absolute top-4 left-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs z-50">
+        <div className="font-semibold mb-2">Video Debug</div>
+        <div>Video: {currentVideo.id}</div>
+        <div>Context: {currentVideo.context}</div>
+        <div>Intensity: {currentVideo.intensity}</div>
+        <div>Trigger: {currentVideo.trigger}</div>
+        <div>Loaded: {videoLoaded ? 'Yes' : 'No'}</div>
+        <div>Playing: {isPlaying ? 'Yes' : 'No'}</div>
+        <div className="mt-2 pt-2 border-t border-white/20">
+          <div>Time: {userBehavior.timeOnPage}s</div>
+          <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
+          <div>Interactions: {userBehavior.interactionCount}</div>
+          <div>Idle: {userBehavior.idleTime}s</div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

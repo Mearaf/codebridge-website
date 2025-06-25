@@ -12,35 +12,35 @@ export interface VideoConfig {
 const VIDEO_LIBRARY: VideoConfig[] = [
   {
     id: 'tech-particles',
-    src: 'https://player.vimeo.com/external/374953889.hd.mp4?s=1e3a87c5b32d9c8b1f2e3d4c5b6a7890&profile_id=175',
+    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     intensity: 'subtle',
     context: 'homepage',
     trigger: 'idle'
   },
   {
     id: 'code-flow',
-    src: 'https://player.vimeo.com/external/391982159.hd.mp4?s=2f4b98d6c43e0a9c2g3f4e5d6c7b8901&profile_id=175',
+    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     intensity: 'moderate',
     context: 'services',
     trigger: 'scroll'
   },
   {
     id: 'neural-network',
-    src: 'https://player.vimeo.com/external/401729295.hd.mp4?s=3g5c09e7d54f1b0d3h4g5f6e7d8c9012&profile_id=175',
+    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     intensity: 'engaging',
     context: 'contact',
     trigger: 'focus'
   },
   {
     id: 'digital-waves',
-    src: 'https://player.vimeo.com/external/385761236.hd.mp4?s=4h6d10f8e65g2c1e4i5h6g7f8e9d0123&profile_id=175',
+    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     intensity: 'moderate',
     context: 'about',
     trigger: 'time'
   },
   {
     id: 'connection-lines',
-    src: 'https://player.vimeo.com/external/398547821.hd.mp4?s=5i7e21g9f76h3d2f5j6i7h8g9f0e1234&profile_id=175',
+    src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
     intensity: 'subtle',
     context: 'call',
     trigger: 'hover'

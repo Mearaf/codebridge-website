@@ -8,7 +8,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
       {/* Dynamic Video Background */}
       <DynamicVideoBackground 
-        opacity={0.12}
+        opacity={0.25}
         showControls={true}
         className="z-0"
       />
