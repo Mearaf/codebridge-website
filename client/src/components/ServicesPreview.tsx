@@ -44,13 +44,13 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-purple-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Three core ways we help you bridge the gap between where you are and where you want to be.
           </p>
         </div>

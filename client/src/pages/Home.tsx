@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="pt-16 bg-gradient-to-b from-blue-50 to-white">
+    <div className="pt-16 bg-gradient-to-b from-gray-50/50 to-white/80">
       <HeroSection />
       <MissionBlock />
       <WhoWeHelp />
