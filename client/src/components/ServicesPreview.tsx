@@ -14,8 +14,8 @@ export default function ServicesPreview() {
         "Workflow optimization", 
         "Strategic recommendations"
       ],
-      color: "text-blue-400 bg-blue-500/20 hover:border-blue-500/50",
-      buttonColor: "bg-blue-500 hover:bg-blue-400 text-black"
+      color: "text-black bg-gray-200 hover:border-black",
+      buttonColor: "bg-black hover:bg-gray-800 text-white"
     },
     {
       icon: Cog,
@@ -26,8 +26,8 @@ export default function ServicesPreview() {
         "Custom solutions",
         "Integration support"
       ],
-      color: "text-purple-400 bg-purple-500/20 hover:border-purple-500/50",
-      buttonColor: "bg-purple-600 hover:bg-purple-500 text-white"
+      color: "text-black bg-gray-300 hover:border-black",
+      buttonColor: "bg-black hover:bg-gray-800 text-white"
     },
     {
       icon: GraduationCap,
@@ -38,8 +38,8 @@ export default function ServicesPreview() {
         "Team training",
         "Confidence building"
       ],
-      color: "text-orange-400 bg-orange-500/20 hover:border-orange-500/50",
-      buttonColor: "bg-orange-600 hover:bg-orange-500 text-white"
+      color: "text-black bg-gray-400 hover:border-black",
+      buttonColor: "bg-black hover:bg-gray-800 text-white"
     }
   ];
 
@@ -61,19 +61,19 @@ export default function ServicesPreview() {
             return (
               <Card 
                 key={index}
-                className="bg-black/70 border-gray-800 transition-all duration-500 card-hover holographic-border"
+                className="bg-white/95 border-gray-400 shadow-lg hover:shadow-xl transition-all duration-500"
               >
                 <CardContent className="p-10">
                   <div className={`w-24 h-24 rounded-2xl flex items-center justify-center mb-8 ${service.color}`}>
                     <IconComponent size={36} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-gray-400 mb-8 leading-relaxed">
+                  <h3 className="text-2xl font-bold mb-4 text-black">{service.title}</h3>
+                  <p className="text-gray-700 mb-8 leading-relaxed">
                     {service.description}
                   </p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-gray-300">
+                      <li key={featureIndex} className="flex items-center text-gray-700">
                         <Check className={`mr-3 w-4 h-4 ${service.color.split(' ')[0]}`} />
                         {feature}
                       </li>
