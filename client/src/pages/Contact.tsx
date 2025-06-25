@@ -329,13 +329,13 @@ export default function Contact() {
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-black hover:text-white justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-200 hover:text-black justify-start">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full border-black text-black hover:bg-black hover:text-white justify-start">
+                      <Button variant="outline" className="w-full border-black text-black hover:bg-gray-200 hover:text-black justify-start">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
