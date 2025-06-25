@@ -38,15 +38,35 @@ export default function VideoBackgroundSection({
     if (!video || !useVideo) return;
 
     const handleCanPlay = () => {
+      console.log('Video can play:', videoSrc);
       setVideoLoaded(true);
-      video.play().catch(() => {
-        console.log('Video autoplay prevented');
+      video.play().then(() => {
+        console.log('Video playing successfully');
+      }).catch((error) => {
+        console.log('Video autoplay prevented:', error);
+        setVideoLoaded(true); // Still show the video element
       });
     };
 
+    const handleError = (e: Event) => {
+      console.error('Video error:', e, 'URL:', videoSrc);
+      setVideoLoaded(false);
+    };
+
+    const handleLoadStart = () => {
+      console.log('Video load started:', videoSrc);
+    };
+
     video.addEventListener('canplay', handleCanPlay);
-    return () => video.removeEventListener('canplay', handleCanPlay);
-  }, [useVideo]);
+    video.addEventListener('error', handleError);
+    video.addEventListener('loadstart', handleLoadStart);
+    
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('error', handleError);
+      video.removeEventListener('loadstart', handleLoadStart);
+    };
+  }, [useVideo, videoSrc]);
 
   return (
     <section className={`relative overflow-hidden ${className}`}>
@@ -108,8 +128,12 @@ export default function VideoBackgroundSection({
       </div>
 
       {/* Debug info */}
-      <div className="absolute bottom-4 right-4 bg-black/70 text-white text-xs p-2 rounded">
-        {useVideo ? `Video: ${videoLoaded ? 'Playing' : 'Loading'}` : 'Image Mode'}
+      <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs">
+        <div className="font-semibold mb-1">Video Debug</div>
+        <div>Mode: {useVideo ? 'Video' : 'Image'}</div>
+        <div>Loaded: {videoLoaded ? 'Yes' : 'No'}</div>
+        <div>Source: {videoSrc ? 'Set' : 'None'}</div>
+        <div className="text-xs mt-1 break-all">{videoSrc}</div>
       </div>
     </section>
   );

@@ -89,8 +89,8 @@ export default function Services() {
       {/* Hero Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        videoSrc="https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4"
-        opacity={0.3}
+        videoSrc="https://cdn.pixabay.com/video/2016/12/26/6946-196001617_large.mp4"
+        opacity={0.4}
         useVideo={true}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
