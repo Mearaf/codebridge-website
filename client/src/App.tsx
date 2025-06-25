@@ -36,12 +36,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-black text-white">
+        <MouseEffectWrapper className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
           <Navigation />
           <Router />
           <AIChatbot />
           <Toaster />
-        </div>
+        </MouseEffectWrapper>
       </TooltipProvider>
     </QueryClientProvider>
   );
