@@ -1,15 +1,13 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
-import VideoBackgroundSection from "@/components/VideoBackgroundSection";
+import EnhancedBackground from "@/components/EnhancedBackground";
 
 export default function HeroSection() {
   return (
-    <VideoBackgroundSection 
+    <EnhancedBackground 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-      videoSrc="https://assets.mixkit.co/videos/preview/mixkit-computer-keyboard-and-mouse-in-an-office-4620-large.mp4"
       opacity={0.4}
-      useVideo={true}
     >
       
       {/* Soft Background Pattern */}
@@ -71,6 +69,6 @@ export default function HeroSection() {
       </div>
       
 
-    </VideoBackgroundSection>
+    </EnhancedBackground>
   );
 }

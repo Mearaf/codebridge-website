@@ -89,9 +89,9 @@ export default function Services() {
       {/* Hero Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-data-center-servers-working-4622-large.mp4"
-        opacity={0.3}
-        useVideo={true}
+        imageSrc="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+        opacity={0.15}
+        useVideo={false}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">

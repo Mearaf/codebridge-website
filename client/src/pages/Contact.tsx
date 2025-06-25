@@ -209,9 +209,9 @@ export default function Contact() {
       {/* Main Contact Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90"
-        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-people-working-in-an-office-4623-large.mp4"
-        opacity={0.25}
-        useVideo={true}
+        imageSrc="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80"
+        opacity={0.12}
+        useVideo={false}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
