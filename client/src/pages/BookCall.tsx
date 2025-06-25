@@ -2,12 +2,18 @@ import { Calendar, Clock, Video, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 
 export default function BookCall() {
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
+      <VideoBackgroundSection 
+        className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
+        videoSrc="https://videos.pexels.com/video-files/3130182/3130182-uhd_2560_1440_25fps.mp4"
+        opacity={0.2}
+        useVideo={true}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
             Let's <span className="gradient-text">Talk Tech</span>
@@ -16,7 +22,7 @@ export default function BookCall() {
             We'll meet you wherever you are and help you move forward — no pressure, just clarity.
           </p>
         </div>
-      </section>
+      </VideoBackgroundSection>
 
       {/* Booking Section */}
       <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">

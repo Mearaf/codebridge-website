@@ -1,16 +1,16 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
-import CSSVideoBackground from "@/components/CSSVideoBackground";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
-      {/* CSS-based Dynamic Background */}
-      <CSSVideoBackground 
-        opacity={0.6}
-        className="z-0"
-      />
+    <VideoBackgroundSection 
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
+      videoSrc="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_25fps.mp4"
+      opacity={0.4}
+      useVideo={true}
+    >
       
       {/* Soft Background Pattern */}
       <div className="absolute inset-0 z-10">
@@ -69,6 +69,6 @@ export default function HeroSection() {
           <Users className="text-black w-12 h-12" />
         </div>
       </div>
-    </section>
+    </VideoBackgroundSection>
   );
 }

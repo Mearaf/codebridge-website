@@ -10,7 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Link } from "wouter";
 import { Mail, Phone, MapPin, Clock, MessageCircle, Calendar, CheckCircle } from "lucide-react";
 import Footer from "@/components/Footer";
-import CSSVideoBackground from "@/components/CSSVideoBackground";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
 
@@ -207,9 +207,13 @@ export default function Contact() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="relative py-20 bg-gradient-to-b from-gray-50/60 to-white/90 overflow-hidden">
-        <CSSVideoBackground opacity={0.2} className="z-0" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <VideoBackgroundSection 
+        className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90"
+        videoSrc="https://videos.pexels.com/video-files/3130284/3130284-uhd_2560_1440_25fps.mp4"
+        opacity={0.25}
+        useVideo={true}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card id="contact-form" className="bg-white/95 border-gray-400 shadow-lg">
@@ -348,7 +352,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </section>
+      </VideoBackgroundSection>
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
