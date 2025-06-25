@@ -7,24 +7,24 @@ export default function MissionBlock() {
       icon: Heart,
       title: "Empowerment",
       description: "We don't just fix problems. We build your confidence with tech.",
-      color: "text-blue-400 bg-blue-500/20 hover:border-blue-500/50"
+      color: "text-sky-400 bg-sky-500/20 hover:border-sky-500/50"
     },
     {
       icon: Handshake,
       title: "Partnership",
       description: "We're your friendly guide, not just another vendor.",
-      color: "text-purple-400 bg-purple-500/20 hover:border-purple-500/50"
+      color: "text-violet-400 bg-violet-500/20 hover:border-violet-500/50"
     },
     {
       icon: Lightbulb,
       title: "Clarity",
       description: "No jargon, no judgment — just clear, actionable guidance.",
-      color: "text-orange-400 bg-orange-500/20 hover:border-orange-500/50"
+      color: "text-amber-400 bg-amber-500/20 hover:border-amber-500/50"
     }
   ];
 
   return (
-    <section className="py-20 bg-zinc-900">
+    <section className="py-20 bg-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-white">
@@ -40,7 +40,7 @@ export default function MissionBlock() {
               return (
                 <Card 
                   key={index}
-                  className="bg-black/50 border-gray-800 hover:border-opacity-50 transition-all duration-300 card-hover holographic-border"
+                  className="bg-slate-800/80 border-slate-600 hover:border-sky-400/50 transition-all duration-300 card-hover rounded-xl"
                 >
                   <CardContent className="p-8">
                     <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 ${value.color}`}>

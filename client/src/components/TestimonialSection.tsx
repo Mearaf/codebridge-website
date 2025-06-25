@@ -10,7 +10,7 @@ export default function TestimonialSection() {
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-slate-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
@@ -43,7 +43,7 @@ export default function TestimonialSection() {
   }
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-slate-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">

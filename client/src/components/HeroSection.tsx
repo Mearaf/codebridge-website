@@ -18,7 +18,7 @@ export default function HeroSection() {
           {/* Fallback for browsers that don't support video */}
           <div className="w-full h-full bg-gradient-to-br from-black via-zinc-900 to-black"></div>
         </video>
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 bg-slate-900/75"></div>
       </div>
       
       {/* Animated Tech Grid */}
@@ -46,7 +46,7 @@ export default function HeroSection() {
           <Link href="/book-call">
             <Button 
               size="lg" 
-              className="bg-blue-500 hover:bg-blue-400 text-black font-semibold text-lg tech-glow animate-pulse-slow px-8 py-4 holographic-border"
+              className="bg-sky-500 hover:bg-sky-400 text-white font-semibold text-lg tech-glow px-8 py-4 rounded-lg transition-all duration-300"
             >
               Book a Free Call
             </Button>
@@ -55,7 +55,7 @@ export default function HeroSection() {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-black font-semibold text-lg px-8 py-4 holographic-border"
+              className="border-2 border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-slate-900 font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-300"
             >
               Learn More
             </Button>

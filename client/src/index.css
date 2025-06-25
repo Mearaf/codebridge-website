@@ -3,53 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 0%);
+  --background: hsl(220, 15%, 8%);
   --foreground: hsl(0, 0%, 100%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
+  --muted: hsl(220, 12%, 18%);
+  --muted-foreground: hsl(220, 8%, 65%);
+  --popover: hsl(220, 15%, 12%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
+  --card: hsl(220, 15%, 12%);
   --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(196, 100%, 50%);
+  --border: hsl(220, 12%, 22%);
+  --input: hsl(220, 12%, 22%);
+  --primary: hsl(200, 85%, 55%);
   --primary-foreground: hsl(0, 0%, 0%);
-  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary: hsl(220, 12%, 18%);
   --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
+  --accent: hsl(220, 12%, 18%);
   --accent-foreground: hsl(0, 0%, 98%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
-  --radius: 0.5rem;
-  --electric-blue: hsl(196, 100%, 50%);
-  --cyber-purple: hsl(258, 84%, 66%);
-  --neon-orange: hsl(15, 100%, 60%);
-  --charcoal: hsl(0, 0%, 10%);
-  --dark-gray: hsl(0, 0%, 18%);
+  --ring: hsl(220, 15%, 25%);
+  --radius: 0.75rem;
+  --warm-blue: hsl(200, 85%, 55%);
+  --soft-purple: hsl(260, 65%, 70%);
+  --warm-orange: hsl(25, 85%, 65%);
+  --warm-green: hsl(140, 50%, 60%);
+  --charcoal: hsl(220, 15%, 10%);
+  --soft-gray: hsl(220, 10%, 25%);
 }
 
 .dark {
-  --background: hsl(0, 0%, 0%);
+  --background: hsl(220, 15%, 8%);
   --foreground: hsl(0, 0%, 100%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
+  --muted: hsl(220, 12%, 18%);
+  --muted-foreground: hsl(220, 8%, 65%);
+  --popover: hsl(220, 15%, 12%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
+  --card: hsl(220, 15%, 12%);
   --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(196, 100%, 50%);
+  --border: hsl(220, 12%, 22%);
+  --input: hsl(220, 12%, 22%);
+  --primary: hsl(200, 85%, 55%);
   --primary-foreground: hsl(0, 0%, 0%);
-  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary: hsl(220, 12%, 18%);
   --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
+  --accent: hsl(220, 12%, 18%);
   --accent-foreground: hsl(0, 0%, 98%);
   --destructive: hsl(0, 62.8%, 30.6%);
   --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
+  --ring: hsl(220, 15%, 25%);
 }
 
 @layer base {
@@ -80,11 +81,11 @@
 
 @layer components {
   .hero-gradient {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.9) 100%);
   }
   
   .tech-glow {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3), 0 0 30px rgba(56, 189, 248, 0.15);
   }
   
   .card-hover {
@@ -92,20 +93,19 @@
   }
   
   .card-hover:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15), 0 0 30px rgba(139, 92, 246, 0.1);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.12), 0 0 25px rgba(167, 139, 250, 0.08);
   }
   
   .gradient-text {
-    color: hsl(196, 100%, 50%);
+    color: hsl(200, 85%, 55%);
     font-weight: 700;
     display: inline;
     position: relative;
     text-shadow: 
-      0 0 10px rgba(59, 130, 246, 0.6),
-      0 0 20px rgba(139, 92, 246, 0.4),
-      0 0 30px rgba(59, 130, 246, 0.3);
-    animation: color-shift 4s ease-in-out infinite;
+      0 0 8px rgba(56, 189, 248, 0.4),
+      0 0 16px rgba(167, 139, 250, 0.3);
+    animation: color-shift 6s ease-in-out infinite;
   }
   
   /* Reset and ensure all text is white by default */
@@ -186,18 +186,16 @@
 
 @keyframes color-shift {
   0%, 100% { 
-    color: hsl(196, 100%, 50%);
+    color: hsl(200, 85%, 55%);
     text-shadow: 
-      0 0 10px rgba(59, 130, 246, 0.6),
-      0 0 20px rgba(139, 92, 246, 0.4),
-      0 0 30px rgba(59, 130, 246, 0.3);
+      0 0 8px rgba(56, 189, 248, 0.4),
+      0 0 16px rgba(167, 139, 250, 0.3);
   }
   50% { 
-    color: hsl(258, 84%, 66%);
+    color: hsl(260, 65%, 70%);
     text-shadow: 
-      0 0 10px rgba(139, 92, 246, 0.6),
-      0 0 20px rgba(59, 130, 246, 0.4),
-      0 0 30px rgba(139, 92, 246, 0.3);
+      0 0 8px rgba(167, 139, 250, 0.4),
+      0 0 16px rgba(56, 189, 248, 0.3);
   }
 }
 

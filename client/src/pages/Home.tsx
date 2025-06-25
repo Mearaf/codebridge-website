@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 bg-slate-900">
       <HeroSection />
       <MissionBlock />
       <WhoWeHelp />

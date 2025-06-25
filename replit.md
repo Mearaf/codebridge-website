@@ -94,12 +94,12 @@ The application uses the following main entities:
 
 ## Recent Changes
 
-✓ Enhanced hero section with video background and futuristic design elements
-✓ Added holographic borders and tech glow effects throughout the site
-✓ Implemented neural network line animations and floating tech elements
-✓ Enhanced AI chatbot with more human-like personality and responses
-✓ Applied black and white color scheme for text as requested
-✓ Added particle animations and gradient shifts for modern tech aesthetic
+✓ Softened design to be more approachable while maintaining modern tech aesthetic
+✓ Updated color palette from harsh black/blue to warmer slate/sky tones
+✓ Reduced aggressive animations and glow effects for better accessibility
+✓ Fixed gradient text display issues across all browsers
+✓ Enhanced visual hierarchy with better contrast and readability
+✓ Aligned visual design with human-centered mission and values
 
 ## Changelog
 
