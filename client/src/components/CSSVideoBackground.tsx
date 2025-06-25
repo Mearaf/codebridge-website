@@ -21,6 +21,9 @@ export default function CSSVideoBackground({
     interactionCount: 0
   });
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     let timeInterval: NodeJS.Timeout;
     
@@ -35,10 +38,18 @@ export default function CSSVideoBackground({
 
     const handleScroll = () => {
       const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      setScrollY(window.scrollY);
       setUserBehavior(prev => ({
         ...prev,
         scrollDepth: Math.max(prev.scrollDepth, scrollPercent)
       }));
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth) * 100,
+        y: (e.clientY / window.innerHeight) * 100
+      });
     };
 
     const handleInteraction = () => {
@@ -49,6 +60,7 @@ export default function CSSVideoBackground({
     };
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('click', handleInteraction);
     window.addEventListener('keydown', handleInteraction);
 
@@ -57,6 +69,7 @@ export default function CSSVideoBackground({
     return () => {
       clearInterval(timeInterval);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('click', handleInteraction);
       window.removeEventListener('keydown', handleInteraction);
     };
@@ -76,41 +89,119 @@ export default function CSSVideoBackground({
     }
   };
 
+  const parallaxOffset = scrollY * 0.5;
+  const mouseParallaxX = (mousePosition.x - 50) * 0.02;
+  const mouseParallaxY = (mousePosition.y - 50) * 0.02;
+
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {/* Animated particle background */}
+      {/* Layered geometric background - inspired by Mont-Fort */}
       <div 
-        className={`absolute inset-0 ${getAnimationStyle()}`}
+        className="absolute inset-0"
         style={{ 
-          opacity: opacity,
+          opacity: opacity * 0.6,
+          transform: `translateY(${parallaxOffset * 0.3}px) translateX(${mouseParallaxX}px)`,
           background: `
-            radial-gradient(circle at 20% 80%, rgba(0,0,0,0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(0,0,0,0.08) 0%, transparent 50%),
-            radial-gradient(circle at 40% 40%, rgba(0,0,0,0.05) 0%, transparent 50%),
-            linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.02) 100%)
+            linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.02) 49%, rgba(0,0,0,0.02) 51%, transparent 52%),
+            linear-gradient(-45deg, transparent 48%, rgba(0,0,0,0.015) 49%, rgba(0,0,0,0.015) 51%, transparent 52%),
+            radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0,0,0,0.03) 0%, transparent 50%)
           `,
-          backgroundSize: '400px 400px, 300px 300px, 200px 200px, 100% 100%',
-          animation: 'particle-drift 20s ease-in-out infinite'
+          backgroundSize: '60px 60px, 80px 80px, 300px 300px',
+          animation: 'geometric-shift 30s ease-in-out infinite'
+        }}
+      />
+
+      {/* Secondary pattern layer */}
+      <div 
+        className="absolute inset-0"
+        style={{ 
+          opacity: opacity * 0.4,
+          transform: `translateY(${parallaxOffset * 0.6}px) translateX(${mouseParallaxX * -0.5}px)`,
+          background: `
+            repeating-linear-gradient(
+              90deg,
+              transparent 0px,
+              transparent 120px,
+              rgba(0,0,0,0.005) 121px,
+              rgba(0,0,0,0.005) 123px
+            ),
+            repeating-linear-gradient(
+              0deg,
+              transparent 0px,
+              transparent 150px,
+              rgba(0,0,0,0.008) 151px,
+              rgba(0,0,0,0.008) 153px
+            )
+          `,
+          animation: 'grid-flow 40s linear infinite'
+        }}
+      />
+
+      {/* Floating minimalist elements */}
+      <div className="absolute inset-0">
+        {/* Large floating rectangles */}
+        <div 
+          className="absolute w-32 h-1 bg-black/8"
+          style={{
+            top: '20%',
+            left: '15%',
+            transform: `translateY(${parallaxOffset * 0.2 + mouseParallaxY * 2}px) rotate(${mouseParallaxX * 0.5}deg)`,
+            animation: 'float-slow 25s ease-in-out infinite'
+          }}
+        />
+        <div 
+          className="absolute w-1 h-24 bg-black/6"
+          style={{
+            top: '60%',
+            right: '20%',
+            transform: `translateY(${parallaxOffset * -0.3 + mouseParallaxY * -1.5}px) rotate(${mouseParallaxX * -0.3}deg)`,
+            animation: 'float-slow 35s ease-in-out infinite reverse'
+          }}
+        />
+        
+        {/* Small geometric dots */}
+        <div 
+          className="absolute w-2 h-2 bg-black/12 rounded-full"
+          style={{
+            top: '35%',
+            left: '70%',
+            transform: `translate(${mouseParallaxX * 3}px, ${mouseParallaxY * 2}px)`,
+            animation: 'pulse-gentle 8s ease-in-out infinite'
+          }}
+        />
+        <div 
+          className="absolute w-1 h-1 bg-black/15 rounded-full"
+          style={{
+            top: '75%',
+            left: '25%',
+            transform: `translate(${mouseParallaxX * -2}px, ${mouseParallaxY * -1}px)`,
+            animation: 'pulse-gentle 12s ease-in-out infinite 4s'
+          }}
+        />
+      </div>
+
+      {/* Dynamic gradient overlay that responds to mouse */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, 
+              rgba(255,255,255,0.1) 0%, 
+              transparent 30%),
+            linear-gradient(135deg, 
+              rgba(0,0,0,0.01) 0%, 
+              rgba(0,0,0,0.03) 50%, 
+              rgba(0,0,0,0.01) 100%)
+          `,
+          opacity: opacity * 0.8
         }}
       />
       
-      {/* Floating tech elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-black/10 rounded-full animate-float opacity-30"></div>
-        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-black/15 rounded-full animate-float delay-1000 opacity-40"></div>
-        <div className="absolute bottom-1/3 left-1/3 w-3 h-3 bg-black/5 rounded-full animate-float delay-2000 opacity-25"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-1.5 h-1.5 bg-black/12 rounded-full animate-float delay-3000 opacity-35"></div>
-        <div className="absolute top-1/2 left-1/2 w-1 h-8 bg-black/8 animate-pulse delay-4000 opacity-20"></div>
-        <div className="absolute top-3/4 left-1/6 w-6 h-1 bg-black/6 animate-pulse delay-5000 opacity-15"></div>
-      </div>
-      
-      {/* Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/20" />
-      
       {/* Debug Info */}
-      <div className="absolute top-4 right-4 bg-blue-800/80 text-white text-xs p-2 rounded backdrop-blur-sm">
+      <div className="absolute top-4 right-4 bg-black/80 text-white text-xs p-3 rounded backdrop-blur-sm">
+        <div className="font-semibold mb-1">Mont-Fort Inspired</div>
         <div>Animation: {getAnimationStyle()}</div>
-        <div>Time: {userBehavior.timeOnPage}s</div>
+        <div>Mouse: {Math.round(mousePosition.x)}%, {Math.round(mousePosition.y)}%</div>
         <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
         <div>Interactions: {userBehavior.interactionCount}</div>
       </div>

@@ -88,7 +88,7 @@ export default function Services() {
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70 overflow-hidden">
-        <CSSVideoBackground opacity={0.15} className="z-0" />
+        <CSSVideoBackground opacity={0.25} className="z-0" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="relative z-10">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">

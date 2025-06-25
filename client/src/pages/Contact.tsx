@@ -208,7 +208,7 @@ export default function Contact() {
 
       {/* Main Contact Section */}
       <section className="relative py-20 bg-gradient-to-b from-gray-50/60 to-white/90 overflow-hidden">
-        <CSSVideoBackground opacity={0.1} className="z-0" />
+        <CSSVideoBackground opacity={0.2} className="z-0" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}

@@ -95,13 +95,14 @@ The application uses the following main entities:
 
 ## Recent Changes
 
-✓ Replaced placeholder videos with CSS-based animated backgrounds
-✓ Created responsive particle animation system that adapts to user behavior
-✓ Built tech-themed floating elements and gradient animations
-✓ Implemented three intensity levels (subtle, moderate, engaging) based on user engagement
-✓ Added animated backgrounds to hero, services, and contact sections
-✓ Maintained black and white gradient design with dynamic CSS animations
-✓ Removed dependency on external video sources for better reliability
+✓ Implemented Mont-Fort inspired sophisticated background animations
+✓ Added layered geometric patterns with parallax scrolling effects
+✓ Created mouse-responsive gradient overlays and floating elements
+✓ Built multi-layer animation system with depth and movement
+✓ Added minimalist floating rectangles that respond to user interaction
+✓ Implemented dynamic grid patterns and geometric shifts
+✓ Enhanced user behavior tracking with mouse position and scroll depth
+✓ Maintained elegant black and white aesthetic with subtle interactive elements
 
 ## Changelog
 
