@@ -54,10 +54,10 @@ export default function EmailSignup() {
     <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-          Stay <span className="gradient-text">Connected</span>
+          Get Monthly <span className="gradient-text">Tech Tips</span>
         </h2>
         <p className="text-xl text-gray-700 mb-8">
-          Get monthly tech tips in plain English — no jargon, just actionable insights.
+          Monthly tech tips in plain English — no jargon, just actionable insights.
         </p>
         
         <Card className="bg-white/95 border-gray-400 shadow-lg max-w-2xl mx-auto">
@@ -68,15 +68,15 @@ export default function EmailSignup() {
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-black border-gray-700 text-white placeholder-gray-500 focus:border-blue-500"
+                className="flex-1 bg-white border-gray-300 text-black placeholder-gray-500 focus:border-black"
                 required
               />
               <Button
                 type="submit"
                 disabled={signupMutation.isPending}
-                className="bg-blue-500 hover:bg-blue-400 text-black font-semibold whitespace-nowrap"
+                className="bg-black hover:bg-gray-800 text-white font-semibold whitespace-nowrap"
               >
-                {signupMutation.isPending ? "Subscribing..." : "Start My Tech Journey"}
+                {signupMutation.isPending ? "Subscribing..." : "Subscribe Now"}
               </Button>
             </form>
             <p className="text-gray-500 text-sm mt-4">

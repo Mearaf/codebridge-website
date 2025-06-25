@@ -349,26 +349,26 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl font-bold mb-6 text-black">
               Frequently Asked <span className="gradient-text">Questions</span>
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-700">
               Common questions about working with CodeBridge.
             </p>
           </div>
           
-          <Card className="bg-zinc-900 border-gray-800">
+          <Card className="bg-white/95 border-gray-400 shadow-lg">
             <CardContent className="p-8">
               <Accordion type="single" collapsible className="space-y-4">
                 {faqData.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-gray-700">
-                    <AccordionTrigger className="text-left hover:text-blue-400 transition-colors">
+                  <AccordionItem key={index} value={`item-${index}`} className="border-gray-300">
+                    <AccordionTrigger className="text-left hover:text-black transition-colors text-black">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-400 leading-relaxed">
+                    <AccordionContent className="text-gray-700 leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -380,16 +380,16 @@ export default function Contact() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-4xl font-bold mb-6 text-black">
             Still Have <span className="gradient-text">Questions</span>?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-gray-700 mb-8">
             The best way to get answers is to have a conversation. No pressure, just clarity.
           </p>
           <Link href="/book-call">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-400 text-black font-semibold px-8 py-4 tech-glow">
+            <Button size="lg" className="bg-black hover:bg-gray-800 text-white font-semibold px-8 py-4">
               Book Your Free Call
             </Button>
           </Link>

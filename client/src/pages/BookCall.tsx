@@ -118,9 +118,9 @@ export default function BookCall() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-zinc-900">
+      <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12 text-black">
             Common <span className="gradient-text">Questions</span>
           </h2>
           
@@ -147,10 +147,10 @@ export default function BookCall() {
                 answer: "We'll send you a summary of what we discussed and any resources we mentioned. If there's a potential fit, we'll outline some options. No pressure, ever."
               }
             ].map((faq, index) => (
-              <Card key={index} className="bg-black/50 border-gray-800">
+              <Card key={index} className="bg-white/95 border-gray-400 shadow-lg">
                 <CardContent className="p-6">
-                  <h3 className="font-semibold text-white mb-3">{faq.question}</h3>
-                  <p className="text-gray-400">{faq.answer}</p>
+                  <h3 className="font-semibold text-black mb-3">{faq.question}</h3>
+                  <p className="text-gray-700">{faq.answer}</p>
                 </CardContent>
               </Card>
             ))}
