@@ -57,7 +57,7 @@ export default function About() {
       <section className="py-20 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className="text-4xl font-bold mb-6 text-white">
               What Makes Us <span className="gradient-text">Different</span>
             </h2>
           </div>

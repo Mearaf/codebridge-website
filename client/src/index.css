@@ -101,18 +101,28 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    color: hsl(196, 100%, 50%); /* Fallback color */
+    color: hsl(196, 100%, 50%) !important; /* Strong fallback color */
     animation: gradient-shift 3s ease-in-out infinite;
     display: inline-block;
     font-weight: 700;
   }
   
-  /* Fallback for browsers that don't support background-clip: text */
+  /* Strong fallback for browsers that don't support background-clip: text */
   @supports not (-webkit-background-clip: text) {
     .gradient-text {
-      color: hsl(196, 100%, 50%);
-      -webkit-text-fill-color: unset;
+      color: hsl(196, 100%, 50%) !important;
+      -webkit-text-fill-color: hsl(196, 100%, 50%) !important;
+      background: none !important;
     }
+  }
+  
+  /* Ensure non-gradient text stays white */
+  h1, h2, h3 {
+    color: white !important;
+  }
+  
+  h1 .gradient-text, h2 .gradient-text, h3 .gradient-text {
+    color: hsl(196, 100%, 50%) !important;
   }
   
   .particle-bg {

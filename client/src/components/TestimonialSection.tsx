@@ -13,7 +13,7 @@ export default function TestimonialSection() {
       <section className="py-20 bg-black">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               What Our <span className="gradient-text">Clients</span> Say
             </h2>
           </div>
@@ -46,7 +46,7 @@ export default function TestimonialSection() {
     <section className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             What Our <span className="gradient-text">Clients</span> Say
           </h2>
           <p className="text-xl text-gray-300">

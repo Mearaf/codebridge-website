@@ -53,7 +53,7 @@ export default function EmailSignup() {
   return (
     <section className="py-20 bg-black">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
           Stay <span className="gradient-text">Connected</span>
         </h2>
         <p className="text-xl text-gray-300 mb-8">
