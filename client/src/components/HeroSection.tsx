@@ -7,8 +7,8 @@ export default function HeroSection() {
   return (
     <VideoBackgroundSection 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-      videoSrc="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-      opacity={0.6}
+      videoSrc="https://assets.mixkit.co/videos/preview/mixkit-computer-keyboard-and-mouse-in-an-office-4620-large.mp4"
+      opacity={0.4}
       useVideo={true}
     >
       

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Search, BookOpen, Video, Download, ExternalLink, Clock } from "lucide-react";
 import Footer from "@/components/Footer";
-import ImageBackgroundSection from "@/components/ImageBackgroundSection";
+import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 
 export default function Resources() {
   const [searchTerm, setSearchTerm] = useState("");

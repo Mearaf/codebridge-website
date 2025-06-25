@@ -209,8 +209,8 @@ export default function Contact() {
       {/* Main Contact Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90"
-        videoSrc="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
-        opacity={0.2}
+        videoSrc="https://assets.mixkit.co/videos/preview/mixkit-people-working-in-an-office-4623-large.mp4"
+        opacity={0.25}
         useVideo={true}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
