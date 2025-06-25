@@ -16,12 +16,12 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+    <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
             <div className="text-2xl font-bold">
-              <span className="text-white">Code</span>
+              <span className="text-black">Code</span>
               <span className="gradient-text">Bridge</span>
             </div>
           </Link>
@@ -34,8 +34,8 @@ export default function Navigation() {
                   href={item.path}
                   className={`transition-colors duration-300 ${
                     location === item.path
-                      ? "text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                      ? "text-black font-semibold"
+                      : "text-gray-600 hover:text-black"
                   }`}
                 >
                   {item.label}
@@ -46,7 +46,7 @@ export default function Navigation() {
           
           <div className="hidden md:block">
             <Link href="/book-call">
-              <Button className="bg-blue-500 hover:bg-blue-400 text-black font-semibold tech-glow">
+              <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
                 Book a Free Call
               </Button>
             </Link>

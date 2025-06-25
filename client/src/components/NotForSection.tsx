@@ -13,8 +13,8 @@ export default function NotForSection() {
         </p>
         <Card className="bg-white/95 border-gray-400 shadow-lg">
           <CardContent className="p-8">
-            <p className="text-lg text-gray-400">
-              <strong className="text-white">We're perfect for you if:</strong> You want to learn, grow, and feel confident with technology — not just have someone else handle it for you.
+            <p className="text-lg text-gray-700">
+              <strong className="text-black">We're perfect for you if:</strong> You want to learn, grow, and feel confident with technology — not just have someone else handle it for you.
             </p>
           </CardContent>
         </Card>

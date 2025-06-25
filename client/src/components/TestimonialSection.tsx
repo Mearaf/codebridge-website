@@ -10,7 +10,7 @@ export default function TestimonialSection() {
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
@@ -49,7 +49,7 @@ export default function TestimonialSection() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             What Our <span className="gradient-text">Clients</span> Say
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-gray-700">
             Real stories from real people who've transformed their relationship with technology.
           </p>
         </div>
