@@ -2,13 +2,20 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
 import DynamicVideoBackground from "@/components/DynamicVideoBackground";
+import SimpleVideoBackground from "@/components/SimpleVideoBackground";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70">
+      {/* Simple Video Background for immediate visibility */}
+      <SimpleVideoBackground 
+        opacity={0.3}
+        className="z-0"
+      />
+      
       {/* Dynamic Video Background */}
       <DynamicVideoBackground 
-        opacity={0.25}
+        opacity={0.4}
         showControls={true}
         className="z-0"
       />

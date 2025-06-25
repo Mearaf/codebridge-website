@@ -100,24 +100,22 @@ export default function DynamicVideoBackground({
     setIsMuted(video.muted);
   };
 
-  // Always show debug info and fallback if needed
+  // Show debug even when no video is active
   if (!currentVideo || !isVideoActive) {
     return (
       <div className={`absolute inset-0 overflow-hidden ${className}`}>
-        {/* Debug Info */}
-        {process.env.NODE_ENV === 'development' && showControls && (
-          <div className="absolute top-4 left-4 bg-red-800/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs">
-            <div className="font-semibold mb-2">No Video Active</div>
-            <div>Current Video: {currentVideo?.id || 'None'}</div>
-            <div>Is Active: {isVideoActive ? 'Yes' : 'No'}</div>
-            <div className="mt-2 pt-2 border-t border-white/20">
-              <div>Time: {userBehavior.timeOnPage}s</div>
-              <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
-              <div>Interactions: {userBehavior.interactionCount}</div>
-              <div>Idle: {userBehavior.idleTime}s</div>
-            </div>
+        {/* Always show debug info for troubleshooting */}
+        <div className="absolute top-4 left-4 bg-red-800/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs z-50">
+          <div className="font-semibold mb-2">No Video Active</div>
+          <div>Current Video: {currentVideo?.id || 'None'}</div>
+          <div>Is Active: {isVideoActive ? 'Yes' : 'No'}</div>
+          <div className="mt-2 pt-2 border-t border-white/20">
+            <div>Time: {userBehavior.timeOnPage}s</div>
+            <div>Scroll: {Math.round(userBehavior.scrollDepth)}%</div>
+            <div>Interactions: {userBehavior.interactionCount}</div>
+            <div>Idle: {userBehavior.idleTime}s</div>
           </div>
-        )}
+        </div>
       </div>
     );
   }
@@ -130,19 +128,21 @@ export default function DynamicVideoBackground({
         className="absolute inset-0 w-full h-full object-cover"
         style={{ 
           opacity: opacity,
-          filter: 'blur(1px) brightness(0.8)',
-          transform: 'scale(1.05)' // Slight scale to hide edges after blur
+          filter: 'blur(0.5px) brightness(0.9)',
+          transform: 'scale(1.02)', // Slight scale to hide edges
+          zIndex: 1
         }}
         muted={isMuted}
         loop
         playsInline
-        preload="metadata"
+        preload="auto"
+        autoPlay
       />
 
       {/* Overlay for better text readability */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10"
-        style={{ backdropFilter: 'blur(0.5px)' }}
+        className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-black/20"
+        style={{ backdropFilter: 'blur(0.5px)', zIndex: 2 }}
       />
 
       {/* Video Controls (optional) */}
