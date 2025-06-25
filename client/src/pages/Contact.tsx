@@ -209,8 +209,8 @@ export default function Contact() {
       {/* Main Contact Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-b from-gray-50/60 to-white/90"
-        videoSrc="https://cdn.pixabay.com/video/2020/05/17/39886-420019291_large.mp4"
-        opacity={0.3}
+        videoSrc="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+        opacity={0.2}
         useVideo={true}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

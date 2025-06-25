@@ -2,14 +2,13 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Code, Users } from "lucide-react";
 import VideoBackgroundSection from "@/components/VideoBackgroundSection";
-import TestVideoComponent from "@/components/TestVideoComponent";
 
 export default function HeroSection() {
   return (
     <VideoBackgroundSection 
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-      videoSrc="https://cdn.pixabay.com/video/2019/06/25/24687-343567659_large.mp4"
-      opacity={0.5}
+      videoSrc="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+      opacity={0.6}
       useVideo={true}
     >
       
@@ -71,8 +70,7 @@ export default function HeroSection() {
         </div>
       </div>
       
-      {/* Test Component for debugging */}
-      <TestVideoComponent />
+
     </VideoBackgroundSection>
   );
 }

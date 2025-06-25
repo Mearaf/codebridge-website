@@ -40,12 +40,16 @@ export default function VideoBackgroundSection({
     const handleCanPlay = () => {
       console.log('Video can play:', videoSrc);
       setVideoLoaded(true);
-      video.play().then(() => {
+      
+      // Force play without promises for better compatibility
+      try {
+        video.currentTime = 0;
+        video.play();
         console.log('Video playing successfully');
-      }).catch((error) => {
+      } catch (error) {
         console.log('Video autoplay prevented:', error);
         setVideoLoaded(true); // Still show the video element
-      });
+      }
     };
 
     const handleError = (e: Event) => {
@@ -83,9 +87,12 @@ export default function VideoBackgroundSection({
           muted
           loop
           playsInline
-          preload="auto"
-          src={videoSrc}
-        />
+          preload="metadata"
+          autoPlay
+        >
+          <source src={videoSrc} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       )}
 
       {/* Image Background */}
@@ -128,12 +135,25 @@ export default function VideoBackgroundSection({
       </div>
 
       {/* Debug info */}
-      <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs">
+      <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs z-50">
         <div className="font-semibold mb-1">Video Debug</div>
         <div>Mode: {useVideo ? 'Video' : 'Image'}</div>
         <div>Loaded: {videoLoaded ? 'Yes' : 'No'}</div>
         <div>Source: {videoSrc ? 'Set' : 'None'}</div>
+        <div>Opacity: {opacity}</div>
         <div className="text-xs mt-1 break-all">{videoSrc}</div>
+        <button 
+          onClick={() => {
+            const video = videoRef.current;
+            if (video) {
+              video.load();
+              setTimeout(() => video.play(), 100);
+            }
+          }}
+          className="mt-2 px-2 py-1 bg-white/20 rounded text-xs"
+        >
+          Retry Video
+        </button>
       </div>
     </section>
   );

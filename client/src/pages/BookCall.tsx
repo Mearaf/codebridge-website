@@ -10,8 +10,8 @@ export default function BookCall() {
       {/* Hero Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        videoSrc="https://cdn.pixabay.com/video/2019/07/10/25001-345943026_large.mp4"
-        opacity={0.3}
+        videoSrc="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+        opacity={0.25}
         useVideo={true}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
