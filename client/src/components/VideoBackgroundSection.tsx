@@ -41,20 +41,18 @@ export default function VideoBackgroundSection({
       console.log('Video can play:', videoSrc);
       setVideoLoaded(true);
       
-      // Force play without promises for better compatibility
-      try {
-        video.currentTime = 0;
-        video.play();
-        console.log('Video playing successfully');
-      } catch (error) {
-        console.log('Video autoplay prevented:', error);
-        setVideoLoaded(true); // Still show the video element
+      // Let the browser handle autoplay naturally
+      if (video.paused) {
+        video.play().catch(error => {
+          console.log('Video autoplay prevented, but will be visible:', error);
+        });
       }
     };
 
     const handleError = (e: Event) => {
       console.error('Video error:', e, 'URL:', videoSrc);
       setVideoLoaded(false);
+      setVideoError(true);
     };
 
     const handleLoadStart = () => {
@@ -89,6 +87,8 @@ export default function VideoBackgroundSection({
           playsInline
           preload="metadata"
           autoPlay
+          onCanPlay={() => setVideoLoaded(true)}
+          onError={() => setVideoError(true)}
         >
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
