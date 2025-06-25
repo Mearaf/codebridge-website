@@ -125,7 +125,7 @@ export default function ClientIntake() {
       {/* Hero Section */}
       <section className="py-12 bg-gradient-to-br from-black via-zinc-900 to-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Client <span className="gradient-text">Intake</span> Form
           </h1>
           <p className="text-lg text-gray-300">

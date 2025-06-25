@@ -33,7 +33,7 @@ export default function HeroSection() {
       </div>
       
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white">
           Technology Shouldn't Be{" "}
           <span className="gradient-text animate-glow">Intimidating</span>
         </h1>

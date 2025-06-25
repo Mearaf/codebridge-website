@@ -109,7 +109,7 @@ export default function Resources() {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-black via-zinc-900 to-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
             Plain-English <span className="gradient-text">Tech Tips</span>
           </h1>
           <p className="text-xl text-gray-300 leading-relaxed">
