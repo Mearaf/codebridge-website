@@ -2,17 +2,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import Footer from "@/components/Footer";
-import TechOverlayBackground from "@/components/TechOverlayBackground";
+import BridgeVideoBackground from "@/components/BridgeVideoBackground";
 
 export default function About() {
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
-      <TechOverlayBackground 
+      <BridgeVideoBackground 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        videoSrc="https://videos.pexels.com/video-files/4816/4816-uhd_2560_1440_24fps.mp4"
-        imageSrc="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80"
-        opacity={0.15}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
@@ -22,7 +19,7 @@ export default function About() {
             We believe technology should be a bridge, not a barrier. Our mission is to empower people and organizations to confidently embrace the digital future.
           </p>
         </div>
-      </TechOverlayBackground>
+      </BridgeVideoBackground>
 
       {/* Founder Story */}
       <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
