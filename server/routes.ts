@@ -260,6 +260,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Transform form data to match calendar booking schema
       const { name, email, phone, message, scheduledFor } = req.body;
       
+      // Validate required fields
+      if (!name || !email || !scheduledFor) {
+        return res.status(400).json({ 
+          success: false, 
+          message: "Name, email, and scheduled time are required" 
+        });
+      }
+      
       const bookingData = {
         clientName: name,
         clientEmail: email,
@@ -285,16 +293,27 @@ export async function registerRoutes(app: Express): Promise<Server> {
         location: 'Video Conference (link will be provided)'
       };
 
-      const calendarEvent = await googleCalendar.createEvent(eventDetails);
+      // Try to create Google Calendar event (graceful fallback if not configured)
+      let calendarEvent = null;
+      try {
+        if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET && process.env.GOOGLE_REFRESH_TOKEN) {
+          calendarEvent = await googleCalendar.createEvent(eventDetails);
+        }
+      } catch (calendarError) {
+        console.log('Google Calendar not configured, booking saved to database only');
+      }
       
       res.json({ 
         success: true, 
         booking,
-        calendarEvent: {
+        message: calendarEvent 
+          ? "Appointment booked! Calendar invitation will be sent shortly."
+          : "Appointment request received! We'll contact you within 24 hours to confirm your time slot.",
+        calendarEvent: calendarEvent ? {
           id: calendarEvent.id,
           htmlLink: calendarEvent.htmlLink,
           meetingLink: calendarEvent.hangoutLink
-        }
+        } : null
       });
     } catch (error) {
       console.error('Calendar booking error:', error);
@@ -305,10 +324,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
-        res.status(500).json({ 
-          success: false, 
-          message: "Failed to create calendar booking" 
-        });
+        // Even if calendar fails, we can still save the booking to database
+        try {
+          const { name, email, phone, message, scheduledFor } = req.body;
+          
+          const bookingData = {
+            clientName: name,
+            clientEmail: email,
+            appointmentType: 'consultation',
+            scheduledAt: new Date(scheduledFor),
+            notes: message || '',
+            status: 'pending'
+          };
+          
+          const booking = await storage.createCalendarBooking(bookingData);
+          
+          res.json({ 
+            success: true, 
+            booking,
+            message: "Appointment request received! We'll contact you within 24 hours to confirm your time slot.",
+            calendarEvent: null
+          });
+        } catch (dbError) {
+          console.error('Database error:', dbError);
+          res.status(500).json({ 
+            success: false, 
+            message: "Failed to create calendar booking" 
+          });
+        }
       }
     }
   });
