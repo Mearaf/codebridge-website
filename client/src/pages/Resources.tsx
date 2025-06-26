@@ -33,7 +33,7 @@ export default function Resources() {
     excerpt: article.excerpt,
     category: article.category,
     type: article.category === 'guides' ? 'Guide' : 'Article',
-    readTime: article.readTime || article.read_time,
+    readTime: article.readTime,
     featured: article.featured,
     tags: article.tags || [],
     slug: article.slug
@@ -138,10 +138,12 @@ export default function Resources() {
                     </div>
                   </div>
                   <div className="text-center">
-                    <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
-                      Read Now
-                      <ExternalLink size={16} className="ml-2" />
-                    </Button>
+                    <Link href={`/resources/${featuredResource.slug}`}>
+                      <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
+                        Read Now
+                        <ExternalLink size={16} className="ml-2" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>
