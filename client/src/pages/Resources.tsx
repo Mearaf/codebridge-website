@@ -36,7 +36,8 @@ export default function Resources() {
     readTime: article.readTime,
     featured: article.featured,
     tags: article.tags || [],
-    slug: article.slug
+    slug: article.slug,
+    publishedAt: article.publishedAt
   })) : [];
 
   const filteredResources = resources.filter((resource: any) => {
@@ -47,7 +48,10 @@ export default function Resources() {
     return matchesSearch && matchesCategory;
   });
 
-  const featuredResource = resources.find((r: any) => r.featured);
+  // Get the most recent featured article
+  const featuredResource = resources
+    .filter((r: any) => r.featured)
+    .sort((a: any, b: any) => new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime())[0];
 
   const getIcon = (type: string) => {
     switch (type.toLowerCase()) {
