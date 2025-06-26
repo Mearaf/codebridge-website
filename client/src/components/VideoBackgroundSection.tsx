@@ -38,25 +38,22 @@ export default function VideoBackgroundSection({
     if (!video || !useVideo) return;
 
     const handleCanPlay = () => {
-      console.log('Video can play:', videoSrc);
       setVideoLoaded(true);
       
       // Let the browser handle autoplay naturally
       if (video.paused) {
-        video.play().catch(error => {
-          console.log('Video autoplay prevented, but will be visible:', error);
+        video.play().catch(() => {
+          // Autoplay prevented, video will still be visible
         });
       }
     };
 
-    const handleError = (e: Event) => {
-      console.error('Video error:', e, 'URL:', videoSrc);
+    const handleError = () => {
       setVideoLoaded(false);
-      setVideoError(true);
     };
 
     const handleLoadStart = () => {
-      console.log('Video load started:', videoSrc);
+      // Video loading started
     };
 
     video.addEventListener('canplay', handleCanPlay);
@@ -88,7 +85,7 @@ export default function VideoBackgroundSection({
           preload="metadata"
           autoPlay
           onCanPlay={() => setVideoLoaded(true)}
-          onError={() => setVideoError(true)}
+          onError={() => setVideoLoaded(false)}
         >
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
@@ -134,27 +131,7 @@ export default function VideoBackgroundSection({
         {children}
       </div>
 
-      {/* Debug info */}
-      <div className="absolute bottom-4 right-4 bg-black/80 text-white text-xs p-3 rounded-lg backdrop-blur-sm max-w-xs z-50">
-        <div className="font-semibold mb-1">Video Debug</div>
-        <div>Mode: {useVideo ? 'Video' : 'Image'}</div>
-        <div>Loaded: {videoLoaded ? 'Yes' : 'No'}</div>
-        <div>Source: {videoSrc ? 'Set' : 'None'}</div>
-        <div>Opacity: {opacity}</div>
-        <div className="text-xs mt-1 break-all">{videoSrc}</div>
-        <button 
-          onClick={() => {
-            const video = videoRef.current;
-            if (video) {
-              video.load();
-              setTimeout(() => video.play(), 100);
-            }
-          }}
-          className="mt-2 px-2 py-1 bg-white/20 rounded text-xs"
-        >
-          Retry Video
-        </button>
-      </div>
+
     </section>
   );
 }
