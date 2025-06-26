@@ -289,7 +289,7 @@ export default function ClientIntake() {
                   variant="outline"
                   onClick={handlePrevious}
                   disabled={currentStep === 1}
-                  className="border-gray-600 text-gray-300 hover:bg-gray-800"
+                  className="border-gray-300 text-gray-700 hover:bg-gray-100 disabled:opacity-50"
                 >
                   <ChevronLeft size={16} className="mr-2" />
                   Previous
@@ -299,7 +299,7 @@ export default function ClientIntake() {
                   <Button
                     onClick={handleNext}
                     disabled={!isStepValid(currentStep)}
-                    className="bg-blue-500 hover:bg-blue-400 text-black font-semibold"
+                    className="bg-black hover:bg-gray-800 text-white font-semibold disabled:opacity-50"
                   >
                     Next
                     <ChevronRight size={16} className="ml-2" />
@@ -308,7 +308,7 @@ export default function ClientIntake() {
                   <Button
                     onClick={handleSubmit}
                     disabled={intakeMutation.isPending || !isStepValid(currentStep)}
-                    className="bg-green-600 hover:bg-green-500 text-white font-semibold"
+                    className="bg-black hover:bg-gray-800 text-white font-semibold disabled:opacity-50"
                   >
                     {intakeMutation.isPending ? "Submitting..." : "Submit Form"}
                   </Button>
