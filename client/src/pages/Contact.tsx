@@ -332,13 +332,13 @@ export default function Contact() {
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-black hover:text-white hover-lift magnetic ripple mb-4">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-gray-800 hover:text-white hover-lift magnetic ripple mb-4">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-black hover:text-white hover-lift magnetic ripple">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-gray-800 hover:text-white hover-lift magnetic ripple">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
