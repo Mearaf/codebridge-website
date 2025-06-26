@@ -176,6 +176,84 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Chat endpoints
+  app.post("/api/chat", async (req, res) => {
+    try {
+      const { message, conversationHistory, chatType = 'ai' } = req.body;
+      
+      if (!message?.trim()) {
+        return res.status(400).json({ error: "Message is required" });
+      }
+
+      let response: string;
+      const { chatService } = await import('./chatService');
+
+      switch (chatType) {
+        case 'ai':
+          response = await chatService.getAIResponse(message, conversationHistory || []);
+          break;
+        case 'scripted':
+          response = chatService.getScriptedResponse(message);
+          break;
+        case 'live':
+          // Create or get live chat session
+          const userId = (req as any).sessionID || 'anonymous';
+          const session = chatService.createLiveChatSession(userId);
+          response = "You've been connected to our live chat. A consultant will be with you shortly!";
+          break;
+        default:
+          response = chatService.getScriptedResponse(message);
+      }
+
+      res.json({ 
+        response,
+        type: chatType,
+        timestamp: new Date().toISOString()
+      });
+    } catch (error) {
+      console.error('Chat API error:', error);
+      res.status(500).json({ 
+        error: "Sorry, I'm having trouble right now. Please try again or contact us directly.",
+        fallback: true
+      });
+    }
+  });
+
+  // Live chat session endpoints
+  app.get("/api/chat/live/sessions", async (req, res) => {
+    try {
+      const { chatService } = await import('./chatService');
+      const sessions = chatService.getActiveLiveChatSessions();
+      res.json(sessions);
+    } catch (error) {
+      console.error('Live chat sessions error:', error);
+      res.status(500).json({ error: "Failed to fetch live chat sessions" });
+    }
+  });
+
+  app.post("/api/chat/live/:sessionId/message", async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      const { text, isBot } = req.body;
+      
+      const { chatService } = await import('./chatService');
+      const success = chatService.addMessageToLiveChat(sessionId, {
+        text,
+        isBot,
+        type: 'live'
+      });
+
+      if (success) {
+        res.json({ success: true });
+      } else {
+        res.status(404).json({ error: "Chat session not found" });
+      }
+    } catch (error) {
+      console.error('Live chat message error:', error);
+      res.status(500).json({ error: "Failed to send message" });
+    }
+  });
+
   // Calendar booking endpoint
   app.post("/api/calendar/book", async (req, res) => {
     try {
