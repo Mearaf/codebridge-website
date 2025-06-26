@@ -22,11 +22,44 @@ export default function BookCall() {
   });
   const { toast } = useToast();
 
+  // Generate available time slots
+  const generateTimeSlots = () => {
+    const slots = [];
+    const startHour = 9; // 9 AM
+    const endHour = 17; // 5 PM
+    
+    for (let hour = startHour; hour < endHour; hour++) {
+      // Add hourly slots
+      const timeString = `${hour.toString().padStart(2, '0')}:00`;
+      const displayTime = `${hour > 12 ? hour - 12 : hour === 0 ? 12 : hour}:00 ${hour >= 12 ? 'PM' : 'AM'}`;
+      
+      slots.push({
+        startTime: timeString,
+        endTime: `${(hour + 1).toString().padStart(2, '0')}:00`,
+        displayTime: displayTime,
+        available: true
+      });
+      
+      // Add half-hour slots (except for last hour)
+      if (hour < endHour - 1) {
+        const halfHourString = `${hour.toString().padStart(2, '0')}:30`;
+        const halfHourDisplay = `${hour > 12 ? hour - 12 : hour === 0 ? 12 : hour}:30 ${hour >= 12 ? 'PM' : 'AM'}`;
+        
+        slots.push({
+          startTime: halfHourString,
+          endTime: `${hour.toString().padStart(2, '0')}:30`,
+          displayTime: halfHourDisplay,
+          available: true
+        });
+      }
+    }
+    
+    return slots;
+  };
+
   // Get available time slots for selected date
-  const { data: availability, isLoading: loadingAvailability } = useQuery({
-    queryKey: ['/api/calendar/availability', selectedDate],
-    enabled: !!selectedDate,
-  });
+  const availableSlots = selectedDate ? generateTimeSlots() : [];
+  const loadingAvailability = false;
 
   // Book calendar appointment
   const bookingMutation = useMutation({
@@ -70,7 +103,7 @@ export default function BookCall() {
       return;
     }
 
-    const scheduledFor = new Date(`${selectedDate}T${selectedTime}`).toISOString();
+    const scheduledFor = new Date(`${selectedDate}T${selectedTime}:00`).toISOString();
     
     bookingMutation.mutate({
       ...formData,
@@ -209,8 +242,8 @@ export default function BookCall() {
                           className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
                         >
                           <option value="">Choose a time...</option>
-                          {availability?.availableSlots?.map((slot: any) => (
-                            <option key={slot.startTime} value={new Date(slot.startTime).toTimeString().slice(0, 5)}>
+                          {availableSlots.map((slot) => (
+                            <option key={slot.startTime} value={slot.startTime}>
                               {slot.displayTime}
                             </option>
                           ))}
