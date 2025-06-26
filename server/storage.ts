@@ -32,7 +32,7 @@ export interface IStorage {
   createContact(contact: InsertContact): Promise<Contact>;
   getContacts(): Promise<Contact[]>;
   
-  createEmailSignup(signup: InsertEmailSignup): Promise<EmailSignup>;
+  createEmailSignup(signup: InsertEmailSignup): Promise<{ signup: EmailSignup; isNew: boolean }>;
   getEmailSignups(): Promise<EmailSignup[]>;
   
   createClientIntake(intake: InsertClientIntake): Promise<ClientIntake>;
@@ -84,12 +84,24 @@ export class DatabaseStorage implements IStorage {
     return await db.select().from(contacts).orderBy(contacts.createdAt);
   }
 
-  async createEmailSignup(insertSignup: InsertEmailSignup): Promise<EmailSignup> {
+  async createEmailSignup(insertSignup: InsertEmailSignup): Promise<{ signup: EmailSignup; isNew: boolean }> {
+    // Check if email already exists
+    const existing = await db
+      .select()
+      .from(emailSignups)
+      .where(eq(emailSignups.email, insertSignup.email))
+      .limit(1);
+    
+    if (existing.length > 0) {
+      // Return existing signup with flag indicating it's not new
+      return { signup: existing[0], isNew: false };
+    }
+    
     const [signup] = await db
       .insert(emailSignups)
       .values(insertSignup)
       .returning();
-    return signup;
+    return { signup, isNew: true };
   }
 
   async getEmailSignups(): Promise<EmailSignup[]> {

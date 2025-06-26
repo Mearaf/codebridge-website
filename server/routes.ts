@@ -39,8 +39,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/email-signup", async (req, res) => {
     try {
       const signupData = insertEmailSignupSchema.parse(req.body);
-      const signup = await storage.createEmailSignup(signupData);
-      res.json({ success: true, signup });
+      
+      const result = await storage.createEmailSignup(signupData);
+      
+      // Send notification email to admin for new subscribers only
+      if (result.isNew) {
+        try {
+          // Log new subscriber for admin notification
+          console.log(`🎉 NEW SUBSCRIBER: ${signupData.email} signed up at ${new Date().toISOString()}`);
+          
+          // You can add email service here (like Nodemailer) if desired
+          // For now, the console log will appear in your server logs
+        } catch (emailError) {
+          console.error('Failed to send admin notification:', emailError);
+          // Don't fail the signup if email notification fails
+        }
+      }
+      
+      res.json({ 
+        success: true, 
+        signup: result.signup,
+        message: result.isNew 
+          ? "Thank you for subscribing! You'll receive our latest tech tips and insights."
+          : "You're already subscribed to our newsletter. Thanks for your continued interest!"
+      });
     } catch (error) {
       if (error instanceof z.ZodError) {
         res.status(400).json({ 
@@ -49,6 +71,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
+        console.error('Email signup error:', error);
         res.status(500).json({ 
           success: false, 
           message: "Failed to subscribe to newsletter" 
