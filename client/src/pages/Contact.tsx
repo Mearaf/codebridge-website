@@ -326,19 +326,19 @@ export default function Contact() {
                   <h3 className="text-xl font-bold mb-6 text-black">Quick Actions</h3>
                   <div>
                     <Link href="/book-call">
-                      <Button className="w-full justify-start bg-black hover:bg-gray-800 text-white font-semibold hover-lift magnetic ripple mb-4">
+                      <Button className="w-full justify-start bg-black text-white font-semibold hover-lift magnetic ripple mb-4 transform transition-transform duration-200 hover:scale-105">
                         <Calendar className="mr-3" size={16} />
                         Schedule Free Consultation
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-gray-800 hover:text-white hover-lift magnetic ripple mb-4">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover-lift magnetic ripple mb-4 transform transition-transform duration-200 hover:scale-105">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-gray-800 hover:text-white hover-lift magnetic ripple">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover-lift magnetic ripple transform transition-transform duration-200 hover:scale-105">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
