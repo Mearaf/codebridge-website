@@ -21,21 +21,25 @@ export default function Resources() {
     { id: "tools", label: "Tools" }
   ];
 
-  const { data: articles = [] } = useQuery({
+  const { data: articles = [], isLoading, error } = useQuery({
     queryKey: ['/api/articles'],
   });
 
-  const resources = articles.map((article: any) => ({
+  console.log('Articles data:', articles);
+  console.log('Articles type:', typeof articles);
+  console.log('Is articles array?', Array.isArray(articles));
+
+  const resources = Array.isArray(articles) ? articles.map((article: any) => ({
     id: article.id,
     title: article.title,
     excerpt: article.excerpt,
     category: article.category,
     type: article.category === 'guides' ? 'Guide' : 'Article',
-    readTime: article.readTime,
+    readTime: article.readTime || article.read_time,
     featured: article.featured,
     tags: article.tags || [],
     slug: article.slug
-  }));
+  })) : [];
 
   const filteredResources = resources.filter((resource: any) => {
     const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -204,13 +208,15 @@ export default function Resources() {
                         </Badge>
                       )}
                     </div>
-                    <Button 
-                      variant="outline" 
-                      className="w-full border-gray-600 text-gray-300 hover:bg-gray-800"
-                    >
-                      {resource.type === "Checklist" ? "Download" : "Read More"}
-                      <ExternalLink size={14} className="ml-2" />
-                    </Button>
+                    <Link href={`/resources/${resource.slug}`}>
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-gray-600 text-gray-300 hover:bg-gray-800"
+                      >
+                        {resource.type === "Checklist" ? "Download" : "Read More"}
+                        <ExternalLink size={14} className="ml-2" />
+                      </Button>
+                    </Link>
                   </CardContent>
                 </Card>
               ))}

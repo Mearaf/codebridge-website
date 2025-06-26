@@ -104,6 +104,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Article routes
+  app.get("/api/articles", async (req, res) => {
+    try {
+      const articles = await storage.getPublishedArticles();
+      res.json(articles);
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to fetch articles" 
+      });
+    }
+  });
+
+  app.get("/api/articles/featured", async (req, res) => {
+    try {
+      const articles = await storage.getFeaturedArticles();
+      res.json(articles);
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to fetch featured articles" 
+      });
+    }
+  });
+
+  app.get("/api/articles/:slug", async (req, res) => {
+    try {
+      const article = await storage.getArticleBySlug(req.params.slug);
+      if (!article) {
+        return res.status(404).json({ 
+          success: false, 
+          message: "Article not found" 
+        });
+      }
+      res.json(article);
+    } catch (error) {
+      res.status(500).json({ 
+        success: false, 
+        message: "Failed to fetch article" 
+      });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
