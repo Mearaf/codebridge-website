@@ -166,7 +166,7 @@ export default function Article() {
                     </Button>
                   </Link>
                   <Link href="/resources">
-                    <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white">
+                    <Button variant="outline" className="border-black text-black">
                       Read More Articles
                     </Button>
                   </Link>
