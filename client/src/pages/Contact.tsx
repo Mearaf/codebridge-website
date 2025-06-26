@@ -214,11 +214,24 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card id="contact-form" className="bg-white/95 border-gray-400 shadow-lg">
-              <CardHeader>
-                <h2 className="text-2xl font-bold text-black">Send Us a Message</h2>
-                <p className="text-gray-700">
-                  Tell us about your tech challenges and we'll get back to you within 24 hours.
-                </p>
+              <CardHeader className="relative overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80"
+                    alt="Professional team collaboration"
+                    className="w-full h-full object-cover opacity-8"
+                  />
+                  <div className="absolute inset-0 bg-white/90"></div>
+                </div>
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <h2 className="text-2xl font-bold text-black">Send Us a Message</h2>
+                  <p className="text-gray-700">
+                    Tell us about your tech challenges and we'll get back to you within 24 hours.
+                  </p>
+                </div>
               </CardHeader>
               <CardContent className="p-8">
                 <form onSubmit={handleSubmit} className="space-y-6">
