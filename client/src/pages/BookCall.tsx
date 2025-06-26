@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
-import VideoBackgroundSection from "@/components/VideoBackgroundSection";
+import ConsultationBackground from "@/components/ConsultationBackground";
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
@@ -136,23 +136,18 @@ export default function BookCall() {
   };
 
   return (
-    <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
+    <ConsultationBackground className="pt-16 min-h-screen">
       {/* Hero Section */}
-      <VideoBackgroundSection 
-        className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        imageSrc="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80"
-        opacity={0.15}
-        useVideo={false}
-      >
+      <div className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
             Let's <span className="gradient-text">Talk Tech</span>
           </h1>
-          <p className="text-xl text-gray-700 leading-relaxed">
+          <p className="text-xl text-gray-200 leading-relaxed">
             We'll meet you wherever you are and help you move forward — no pressure, just clarity.
           </p>
         </div>
-      </VideoBackgroundSection>
+      </div>
 
       {/* Booking Section */}
       <section className="py-20 bg-gradient-to-b from-white/90 to-gray-50/60">
@@ -390,6 +385,6 @@ export default function BookCall() {
       </section>
 
       <Footer />
-    </div>
+    </ConsultationBackground>
   );
 }
