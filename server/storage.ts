@@ -4,6 +4,8 @@ import {
   emailSignups, 
   clientIntakes, 
   testimonials,
+  articles,
+  calendarBookings,
   type User, 
   type InsertUser,
   type Contact,
@@ -13,7 +15,11 @@ import {
   type ClientIntake,
   type InsertClientIntake,
   type Testimonial,
-  type InsertTestimonial
+  type InsertTestimonial,
+  type Article,
+  type InsertArticle,
+  type CalendarBooking,
+  type InsertCalendarBooking
 } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
@@ -35,6 +41,16 @@ export interface IStorage {
   createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial>;
   getTestimonials(): Promise<Testimonial[]>;
   getFeaturedTestimonials(): Promise<Testimonial[]>;
+  
+  createArticle(article: InsertArticle): Promise<Article>;
+  getArticles(): Promise<Article[]>;
+  getPublishedArticles(): Promise<Article[]>;
+  getFeaturedArticles(): Promise<Article[]>;
+  getArticleBySlug(slug: string): Promise<Article | undefined>;
+  
+  createCalendarBooking(booking: InsertCalendarBooking): Promise<CalendarBooking>;
+  getCalendarBookings(): Promise<CalendarBooking[]>;
+  getUpcomingBookings(): Promise<CalendarBooking[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -108,6 +124,49 @@ export class DatabaseStorage implements IStorage {
     return await db.select().from(testimonials)
       .where(eq(testimonials.featured, true))
       .orderBy(testimonials.createdAt);
+  }
+
+  async createArticle(insertArticle: InsertArticle): Promise<Article> {
+    const [article] = await db
+      .insert(articles)
+      .values(insertArticle)
+      .returning();
+    return article;
+  }
+
+  async getArticles(): Promise<Article[]> {
+    return await db.select().from(articles).orderBy(articles.publishedAt);
+  }
+
+  async getPublishedArticles(): Promise<Article[]> {
+    return await db.select().from(articles).where(eq(articles.published, true)).orderBy(articles.publishedAt);
+  }
+
+  async getFeaturedArticles(): Promise<Article[]> {
+    return await db.select().from(articles).where(eq(articles.featured, true)).orderBy(articles.publishedAt);
+  }
+
+  async getArticleBySlug(slug: string): Promise<Article | undefined> {
+    const [article] = await db.select().from(articles).where(eq(articles.slug, slug));
+    return article || undefined;
+  }
+
+  async createCalendarBooking(insertBooking: InsertCalendarBooking): Promise<CalendarBooking> {
+    const [booking] = await db
+      .insert(calendarBookings)
+      .values(insertBooking)
+      .returning();
+    return booking;
+  }
+
+  async getCalendarBookings(): Promise<CalendarBooking[]> {
+    return await db.select().from(calendarBookings).orderBy(calendarBookings.scheduledAt);
+  }
+
+  async getUpcomingBookings(): Promise<CalendarBooking[]> {
+    return await db.select().from(calendarBookings)
+      .where(eq(calendarBookings.status, 'scheduled'))
+      .orderBy(calendarBookings.scheduledAt);
   }
 }
 

@@ -4,7 +4,9 @@ import { storage } from "./storage";
 import { 
   insertContactSchema, 
   insertEmailSignupSchema, 
-  insertClientIntakeSchema 
+  insertClientIntakeSchema,
+  insertArticleSchema,
+  insertCalendarBookingSchema
 } from "@shared/schema";
 import { z } from "zod";
 

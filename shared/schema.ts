@@ -47,6 +47,35 @@ export const testimonials = pgTable("testimonials", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
+export const articles = pgTable("articles", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  excerpt: text("excerpt").notNull(),
+  content: text("content").notNull(),
+  category: text("category").notNull(),
+  tags: text("tags").array(),
+  readTime: text("read_time").notNull(),
+  featured: boolean("featured").default(false),
+  published: boolean("published").default(true),
+  authorName: text("author_name").notNull(),
+  publishedAt: timestamp("published_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const calendarBookings = pgTable("calendar_bookings", {
+  id: serial("id").primaryKey(),
+  googleEventId: text("google_event_id"),
+  clientName: text("client_name").notNull(),
+  clientEmail: text("client_email").notNull(),
+  appointmentType: text("appointment_type").notNull(),
+  scheduledAt: timestamp("scheduled_at").notNull(),
+  duration: integer("duration").default(30),
+  status: text("status").default("scheduled"),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -72,6 +101,17 @@ export const insertTestimonialSchema = createInsertSchema(testimonials).omit({
   createdAt: true,
 });
 
+export const insertArticleSchema = createInsertSchema(articles).omit({
+  id: true,
+  publishedAt: true,
+  updatedAt: true,
+});
+
+export const insertCalendarBookingSchema = createInsertSchema(calendarBookings).omit({
+  id: true,
+  createdAt: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
@@ -82,3 +122,7 @@ export type InsertClientIntake = z.infer<typeof insertClientIntakeSchema>;
 export type ClientIntake = typeof clientIntakes.$inferSelect;
 export type InsertTestimonial = z.infer<typeof insertTestimonialSchema>;
 export type Testimonial = typeof testimonials.$inferSelect;
+export type InsertArticle = z.infer<typeof insertArticleSchema>;
+export type Article = typeof articles.$inferSelect;
+export type InsertCalendarBooking = z.infer<typeof insertCalendarBookingSchema>;
+export type CalendarBooking = typeof calendarBookings.$inferSelect;

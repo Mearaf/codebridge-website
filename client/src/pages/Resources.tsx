@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Search, BookOpen, Video, Download, ExternalLink, Clock } from "lucide-react";
+import { Link } from "wouter";
 import Footer from "@/components/Footer";
 import VideoBackgroundSection from "@/components/VideoBackgroundSection";
 
@@ -19,68 +21,21 @@ export default function Resources() {
     { id: "tools", label: "Tools" }
   ];
 
-  const resources = [
-    {
-      id: 1,
-      title: "The Complete Guide to Choosing Business Software",
-      excerpt: "A comprehensive guide to evaluating and selecting the right software for your business needs.",
-      category: "guides",
-      type: "Guide",
-      readTime: "15 min read",
-      featured: true,
-      tags: ["Software Selection", "Business Tools", "Decision Making"]
-    },
-    {
-      id: 2,
-      title: "5 Signs Your Business Needs a Tech Audit",
-      excerpt: "Learn to recognize when it's time to evaluate your current technology stack.",
-      category: "articles",
-      type: "Article",
-      readTime: "8 min read",
-      featured: false,
-      tags: ["Tech Audit", "Business Growth", "Efficiency"]
-    },
-    {
-      id: 3,
-      title: "Setting Up Your First CRM: A Step-by-Step Walkthrough",
-      excerpt: "Watch as we guide a small business through their first CRM implementation.",
-      category: "videos",
-      type: "Video",
-      readTime: "22 min watch",
-      featured: true,
-      tags: ["CRM", "Implementation", "Customer Management"]
-    },
-    {
-      id: 4,
-      title: "Small Business Technology Checklist",
-      excerpt: "A downloadable checklist to ensure you have all the essential tech tools in place.",
-      category: "tools",
-      type: "Checklist",
-      readTime: "Download",
-      featured: false,
-      tags: ["Checklist", "Small Business", "Technology Stack"]
-    },
-    {
-      id: 5,
-      title: "Understanding Cloud Storage for Nonprofits",
-      excerpt: "Everything you need to know about cloud storage options that work for nonprofit budgets.",
-      category: "articles",
-      type: "Article",
-      readTime: "12 min read",
-      featured: false,
-      tags: ["Cloud Storage", "Nonprofits", "Data Security"]
-    },
-    {
-      id: 6,
-      title: "Database Basics: What Every Business Owner Should Know",
-      excerpt: "Demystifying databases and how they can transform your business operations.",
-      category: "guides",
-      type: "Guide",
-      readTime: "18 min read",
-      featured: false,
-      tags: ["Databases", "Business Operations", "Data Management"]
-    }
-  ];
+  const { data: articles = [] } = useQuery({
+    queryKey: ['/api/articles'],
+  });
+
+  const resources = articles.map(article => ({
+    id: article.id,
+    title: article.title,
+    excerpt: article.excerpt,
+    category: article.category,
+    type: article.category === 'guides' ? 'Guide' : 'Article',
+    readTime: article.readTime,
+    featured: article.featured,
+    tags: article.tags || [],
+    slug: article.slug
+  }));
 
   const filteredResources = resources.filter(resource => {
     const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
