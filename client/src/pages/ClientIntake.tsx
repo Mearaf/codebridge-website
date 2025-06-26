@@ -174,7 +174,7 @@ export default function ClientIntake() {
                   <div>
                     <label className="block text-sm font-medium mb-2">Business Type *</label>
                     <Select value={formData.businessType} onValueChange={(value) => handleInputChange("businessType", value)}>
-                      <SelectTrigger className="bg-black border-gray-700 text-white">
+                      <SelectTrigger className="bg-white border-gray-300 text-black">
                         <SelectValue placeholder="Select your business type" />
                       </SelectTrigger>
                       <SelectContent>
