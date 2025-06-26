@@ -324,21 +324,21 @@ export default function Contact() {
               <Card className="bg-white/95 border-gray-400 shadow-lg">
                 <CardContent className="p-8">
                   <h3 className="text-xl font-bold mb-6 text-black">Quick Actions</h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <Link href="/book-call">
-                      <Button className="w-full justify-start">
+                      <Button className="w-full justify-start bg-black hover:bg-gray-800 text-white font-semibold hover-lift magnetic ripple">
                         <Calendar className="mr-3" size={16} />
                         Schedule Free Consultation
                       </Button>
                     </Link>
                     <Link href="/client-intake">
-                      <Button variant="outline" className="w-full justify-start">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-black hover:text-white hover-lift magnetic ripple">
                         <MessageCircle className="mr-3" size={16} />
                         Complete Client Intake Form
                       </Button>
                     </Link>
                     <Link href="/services">
-                      <Button variant="outline" className="w-full justify-start">
+                      <Button variant="outline" className="w-full justify-start border-black text-black hover:bg-black hover:text-white hover-lift magnetic ripple">
                         <CheckCircle className="mr-3" size={16} />
                         View Our Services
                       </Button>
