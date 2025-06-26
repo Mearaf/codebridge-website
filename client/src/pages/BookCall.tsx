@@ -140,8 +140,8 @@ export default function BookCall() {
       {/* Hero Section */}
       <VideoBackgroundSection 
         className="py-20 bg-gradient-to-br from-white/90 via-gray-50/80 to-white/70"
-        imageSrc="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80"
-        opacity={0.1}
+        imageSrc="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80"
+        opacity={0.15}
         useVideo={false}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
