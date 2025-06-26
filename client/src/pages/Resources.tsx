@@ -265,17 +265,69 @@ export default function Resources() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 bg-zinc-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Get Monthly <span className="gradient-text">Tech Tips</span>
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Join our newsletter for practical technology guidance delivered to your inbox.
-          </p>
-          <Button className="bg-blue-500 hover:bg-blue-400 text-black font-semibold px-8 py-3 tech-glow">
-            Subscribe Now
-          </Button>
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, white 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, white 2px, transparent 2px)
+            `,
+            backgroundSize: '60px 60px',
+            animation: 'float-pattern 20s linear infinite'
+          }} />
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border border-gray-300 shadow-2xl hover-lift magnetic transform-3d glow stagger-animation">
+            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6 ripple">
+              <BookOpen className="w-8 h-8 text-white" />
+            </div>
+            <h2 className="text-4xl font-bold text-black mb-6 glitch">
+              Get Monthly <span className="gradient-text">Tech Tips</span>
+            </h2>
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed parallax">
+              Stay ahead with practical insights, tools, and strategies delivered to your inbox monthly. No spam, just valuable content.
+            </p>
+            <div className="mb-8">
+              <Button className="bg-black hover:bg-gray-800 text-white font-semibold px-8 py-6 text-lg hover-lift ripple magnetic morph-shape">
+                Subscribe Now
+              </Button>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-gray-600">
+              <div className="flex items-center space-x-2 magnetic">
+                <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                  <ExternalLink className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-medium">Monthly insights</span>
+              </div>
+              <div className="flex items-center space-x-2 magnetic">
+                <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                  <ExternalLink className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-medium">Practical tools</span>
+              </div>
+              <div className="flex items-center space-x-2 magnetic">
+                <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
+                  <ExternalLink className="w-4 h-4 text-white" />
+                </div>
+                <span className="font-medium">No spam</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Floating tech icons */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center animate-pulse parallax">
+            <Search className="w-6 h-6 text-white/60" />
+          </div>
+          <div className="absolute top-3/4 right-1/4 w-10 h-10 bg-white/10 rounded-full flex items-center justify-center animate-pulse parallax" style={{ animationDelay: '1s' }}>
+            <Video className="w-5 h-5 text-white/60" />
+          </div>
+          <div className="absolute top-1/2 left-1/6 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center animate-pulse parallax" style={{ animationDelay: '2s' }}>
+            <Download className="w-4 h-4 text-white/60" />
+          </div>
         </div>
       </section>
 
