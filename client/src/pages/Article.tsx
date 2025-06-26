@@ -15,6 +15,9 @@ export default function Article() {
     enabled: !!params?.slug,
   });
 
+  console.log('Article data:', article);
+  console.log('Params:', params);
+
   if (isLoading) {
     return (
       <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90 flex items-center justify-center">
@@ -47,7 +50,9 @@ export default function Article() {
     );
   }
 
-  const formatContent = (content: string) => {
+  const formatContent = (content: string | undefined) => {
+    if (!content) return '';
+    
     return content
       .replace(/\n/g, '<br>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
@@ -73,34 +78,35 @@ export default function Article() {
           
           <div className="mb-6">
             <Badge className="bg-black text-white mb-4">
-              {article.category === 'guides' ? 'Guide' : 'Article'}
+              {article?.category === 'guides' ? 'Guide' : 'Article'}
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black leading-tight">
-              {article.title}
+              {article?.title}
             </h1>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              {article.excerpt}
+              {article?.excerpt}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
             <div className="flex items-center">
               <User className="w-4 h-4 mr-2" />
-              <span>{article.authorName}</span>
+              <span>{article?.authorName || article?.author_name}</span>
             </div>
             <div className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
-              <span>{article.readTime}</span>
+              <span>{article?.readTime || article?.read_time}</span>
             </div>
             <div className="flex items-center">
               <Calendar className="w-4 h-4 mr-2" />
-              <span>{new Date(article.publishedAt).toLocaleDateString()}</span>
+              <span>{article?.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : 
+                     article?.published_at ? new Date(article.published_at).toLocaleDateString() : ''}</span>
             </div>
           </div>
 
-          {article.tags && article.tags.length > 0 && (
+          {article?.tags && article.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-8">
-              {article.tags.map((tag, index) => (
+              {article.tags.map((tag: string, index: number) => (
                 <Badge key={index} variant="outline" className="border-gray-400 text-gray-700">
                   {tag}
                 </Badge>
@@ -117,7 +123,7 @@ export default function Article() {
             <CardContent className="p-8 md:p-12">
               <div 
                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: formatContent(article.content) }}
+                dangerouslySetInnerHTML={{ __html: formatContent(article?.content) }}
               />
               
               {/* Call to Action */}

@@ -25,9 +25,7 @@ export default function Resources() {
     queryKey: ['/api/articles'],
   });
 
-  console.log('Articles data:', articles);
-  console.log('Articles type:', typeof articles);
-  console.log('Is articles array?', Array.isArray(articles));
+  // Debug removed - articles working
 
   const resources = Array.isArray(articles) ? articles.map((article: any) => ({
     id: article.id,
