@@ -54,15 +54,42 @@ export default function Article() {
   const formatContent = (content: string | undefined) => {
     if (!content) return '';
     
-    return content
-      .replace(/\n/g, '<br>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/^# (.*$)/gim, '<h1 class="text-3xl font-bold mb-6 text-black">$1</h1>')
-      .replace(/^## (.*$)/gim, '<h2 class="text-2xl font-bold mb-4 mt-8 text-black">$1</h2>')
-      .replace(/^### (.*$)/gim, '<h3 class="text-xl font-bold mb-3 mt-6 text-black">$1</h3>')
-      .replace(/^\- (.*$)/gim, '<li class="ml-4 mb-2">$1</li>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:underline">$1</a>');
+    let formatted = content
+      // Convert markdown headers
+      .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold mb-6 mt-8 text-black leading-tight">$1</h1>')
+      .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold mb-4 mt-8 text-black leading-tight">$1</h2>')
+      .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-bold mb-3 mt-6 text-black leading-tight">$1</h3>')
+      .replace(/^#### (.*$)/gim, '<h4 class="text-xl font-bold mb-3 mt-4 text-black">$1</h4>')
+      
+      // Convert bold and italic text
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-black">$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+      
+      // Convert links
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-blue-600 hover:text-blue-800 underline transition-colors">$1</a>')
+      
+      // Convert lists - handle bullet points
+      .replace(/^\- (.*$)/gim, '<li class="mb-2 ml-6 list-disc">$1</li>')
+      .replace(/^\* (.*$)/gim, '<li class="mb-2 ml-6 list-disc">$1</li>')
+      
+      // Convert paragraphs (double line breaks)
+      .replace(/\n\n/g, '</p><p class="mb-4 leading-relaxed text-gray-700">')
+      
+      // Convert single line breaks to spaces within paragraphs
+      .replace(/\n/g, ' ');
+    
+    // Wrap content in paragraph tags and handle lists
+    formatted = '<p class="mb-4 leading-relaxed text-gray-700">' + formatted + '</p>';
+    
+    // Fix list formatting by wrapping consecutive <li> elements in <ul>
+    formatted = formatted.replace(/(<li[^>]*>.*?<\/li>)(?:\s*<li[^>]*>.*?<\/li>)*/g, (match) => {
+      return '<ul class="mb-4 space-y-1">' + match + '</ul>';
+    });
+    
+    // Clean up empty paragraphs
+    formatted = formatted.replace(/<p[^>]*><\/p>/g, '');
+    
+    return formatted;
   };
 
   return (
@@ -122,7 +149,7 @@ export default function Article() {
           <Card className="bg-white/95 border-gray-400 shadow-lg">
             <CardContent className="p-8 md:p-12">
               <div 
-                className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+                className="article-content max-w-none text-gray-700 leading-relaxed"
                 dangerouslySetInnerHTML={{ __html: formatContent(article?.content) }}
               />
               

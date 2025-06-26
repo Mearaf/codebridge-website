@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Article content styling */
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4 {
+  scroll-margin-top: 2rem;
+}
+
+.article-content ul {
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
 :root {
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(0, 0%, 0%);
