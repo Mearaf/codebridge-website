@@ -22,6 +22,24 @@ export default function BookCall() {
   });
   const { toast } = useToast();
 
+  // Ensure page loads at the top and handle navigation
+  useEffect(() => {
+    // Scroll to top immediately when component mounts
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    
+    // Clear any hash from URL that might cause scrolling
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+    
+    // Ensure we stay at top after any potential scroll restoration
+    const timer = setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   // Generate available time slots
   const generateTimeSlots = () => {
     const slots = [];
