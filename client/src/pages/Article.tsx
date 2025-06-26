@@ -10,8 +10,9 @@ import Footer from "@/components/Footer";
 export default function Article() {
   const [match, params] = useRoute("/resources/:slug");
   
-  const { data: article, isLoading, error } = useQuery({
+  const { data: article, isLoading, error } = useQuery<Article>({
     queryKey: ['/api/articles', params?.slug],
+    queryFn: () => fetch(`/api/articles/${params?.slug}`).then(res => res.json()),
     enabled: !!params?.slug,
   });
 
@@ -78,34 +79,34 @@ export default function Article() {
           
           <div className="mb-6">
             <Badge className="bg-black text-white mb-4">
-              {(article as any)?.category === 'guides' ? 'Guide' : 'Article'}
+              {article?.category === 'guides' ? 'Guide' : 'Article'}
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black leading-tight">
-              {(article as any)?.title}
+              {article?.title}
             </h1>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              {(article as any)?.excerpt}
+              {article?.excerpt}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
             <div className="flex items-center">
               <User className="w-4 h-4 mr-2" />
-              <span>{(article as any)?.authorName}</span>
+              <span>{article?.authorName}</span>
             </div>
             <div className="flex items-center">
               <Clock className="w-4 h-4 mr-2" />
-              <span>{(article as any)?.readTime}</span>
+              <span>{article?.readTime}</span>
             </div>
             <div className="flex items-center">
               <Calendar className="w-4 h-4 mr-2" />
-              <span>{(article as any)?.publishedAt ? new Date((article as any).publishedAt).toLocaleDateString() : ''}</span>
+              <span>{article?.publishedAt ? new Date(article.publishedAt).toLocaleDateString() : ''}</span>
             </div>
           </div>
 
-          {(article as any)?.tags && (article as any).tags.length > 0 && (
+          {article?.tags && article.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-8">
-              {(article as any).tags.map((tag: string, index: number) => (
+              {article.tags.map((tag: string, index: number) => (
                 <Badge key={index} variant="outline" className="border-gray-400 text-gray-700">
                   {tag}
                 </Badge>
@@ -122,7 +123,7 @@ export default function Article() {
             <CardContent className="p-8 md:p-12">
               <div 
                 className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-                dangerouslySetInnerHTML={{ __html: formatContent((article as any)?.content) }}
+                dangerouslySetInnerHTML={{ __html: formatContent(article?.content) }}
               />
               
               {/* Call to Action */}
