@@ -8,9 +8,7 @@ export class GoogleCalendarService {
     this.oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
-      process.env.NODE_ENV === 'production' 
-        ? `${process.env.REPLIT_DOMAINS?.split(',')[0] || 'localhost:5000'}/auth/google/callback`
-        : 'http://localhost:5000/auth/google/callback'
+      'https://code-bridge-hub-mtaffere.replit.app/auth/google/callback'
     );
 
     if (process.env.GOOGLE_REFRESH_TOKEN) {
