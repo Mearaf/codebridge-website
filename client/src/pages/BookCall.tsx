@@ -140,10 +140,10 @@ export default function BookCall() {
       {/* Hero Section */}
       <div className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
             Let's <span className="gradient-text">Talk Tech</span>
           </h1>
-          <p className="text-xl text-gray-200 leading-relaxed">
+          <p className="text-xl text-gray-700 leading-relaxed">
             We'll meet you wherever you are and help you move forward — no pressure, just clarity.
           </p>
         </div>

@@ -140,8 +140,8 @@ export default function ClientIntake() {
           <Card className="bg-white/95 border-gray-400 shadow-lg">
             <CardHeader>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold text-black">Step {currentStep} of {totalSteps}</h2>
-                <span className="text-sm text-gray-600">{Math.round(progress)}% Complete</span>
+                <h2 className="text-xl font-bold text-gray-900">Step {currentStep} of {totalSteps}</h2>
+                <span className="text-sm font-medium text-gray-700">{Math.round(progress)}% Complete</span>
               </div>
               <Progress value={progress} className="w-full" />
             </CardHeader>
@@ -150,10 +150,10 @@ export default function ClientIntake() {
               {currentStep === 1 && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-4 text-black">Let's start with the basics</h3>
+                    <h3 className="text-lg font-bold mb-4 text-gray-900">Let's start with the basics</h3>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-black">Your Name *</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">Your Name *</label>
                     <Input
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
@@ -162,7 +162,7 @@ export default function ClientIntake() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2 text-black">Email Address *</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">Email Address *</label>
                     <Input
                       type="email"
                       value={formData.email}
@@ -172,7 +172,7 @@ export default function ClientIntake() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Business Type *</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">Business Type *</label>
                     <Select value={formData.businessType} onValueChange={(value) => handleInputChange("businessType", value)}>
                       <SelectTrigger className="bg-white border-gray-300 text-black">
                         <SelectValue placeholder="Select your business type" />
@@ -193,28 +193,28 @@ export default function ClientIntake() {
               {currentStep === 2 && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Tell us about your current tech situation</h3>
+                    <h3 className="text-lg font-bold mb-4 text-gray-900">Tell us about your current tech situation</h3>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">What are your main tech struggles? *</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">What are your main tech struggles? *</label>
                     <Textarea
                       value={formData.mainStruggles}
                       onChange={(e) => handleInputChange("mainStruggles", e.target.value)}
                       placeholder="Describe the technology challenges you're facing..."
                       rows={4}
-                      className="bg-black border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 resize-none"
+                      className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-black resize-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">What tools are you currently using?</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">What tools are you currently using?</label>
                     <Textarea
                       value={formData.currentTools}
                       onChange={(e) => handleInputChange("currentTools", e.target.value)}
                       placeholder="List the software, platforms, or tools you're currently using..."
                       rows={3}
-                      className="bg-black border-gray-700 text-white placeholder-gray-500 focus:border-blue-500 resize-none"
+                      className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-black resize-none"
                     />
-                    <p className="text-xs text-gray-500 mt-1">Optional, but helps us understand your starting point</p>
+                    <p className="text-xs text-gray-600 mt-1 font-medium">Optional, but helps us understand your starting point</p>
                   </div>
                 </div>
               )}
@@ -223,12 +223,12 @@ export default function ClientIntake() {
               {currentStep === 3 && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold mb-4">Project timeline and budget</h3>
+                    <h3 className="text-lg font-bold mb-4 text-gray-900">Project timeline and budget</h3>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">When would you like to get started? *</label>
+                    <label className="block text-sm font-semibold mb-2 text-gray-900">When would you like to get started? *</label>
                     <Select value={formData.projectTimeline} onValueChange={(value) => handleInputChange("projectTimeline", value)}>
-                      <SelectTrigger className="bg-black border-gray-700 text-white">
+                      <SelectTrigger className="bg-white border-gray-300 text-black">
                         <SelectValue placeholder="Select your preferred timeline" />
                       </SelectTrigger>
                       <SelectContent>

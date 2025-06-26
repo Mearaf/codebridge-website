@@ -20,8 +20,8 @@ export default function ConsultationBackground({
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      {/* Light overlay for consistency */}
+      <div className="absolute inset-0 bg-white/85"></div>
       
       {/* Content */}
       <div className="relative z-10">
