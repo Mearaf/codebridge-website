@@ -299,7 +299,7 @@ export default function Contact() {
                       <Phone className="text-black mr-4" size={20} />
                       <div>
                         <p className="text-black">Phone</p>
-                        <p className="text-gray-700">(555) 123-4567</p>
+                        <p className="text-gray-700">571-749-9024</p>
                       </div>
                     </div>
                     <div className="flex items-center">
