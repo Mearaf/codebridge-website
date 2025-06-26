@@ -30,12 +30,15 @@ export default function BookCall() {
 
   // Book calendar appointment
   const bookingMutation = useMutation({
-    mutationFn: (bookingData: any) => 
-      apiRequest('/api/calendar/book', {
+    mutationFn: async (bookingData: any) => {
+      const response = await fetch('/api/calendar/book', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bookingData),
-        headers: { 'Content-Type': 'application/json' }
-      }),
+      });
+      if (!response.ok) throw new Error('Booking failed');
+      return response.json();
+    },
     onSuccess: (data) => {
       toast({
         title: "Appointment Booked!",

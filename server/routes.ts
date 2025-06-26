@@ -179,21 +179,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Calendar booking endpoint
   app.post("/api/calendar/book", async (req, res) => {
     try {
-      const bookingData = insertCalendarBookingSchema.parse(req.body);
+      // Transform form data to match calendar booking schema
+      const { name, email, phone, message, scheduledFor } = req.body;
+      
+      const bookingData = {
+        clientName: name,
+        clientEmail: email,
+        appointmentType: 'consultation',
+        scheduledAt: new Date(scheduledFor),
+        notes: message,
+        status: 'confirmed'
+      };
       
       // Create calendar booking in database
       const booking = await storage.createCalendarBooking(bookingData);
       
       // Create Google Calendar event
-      const startDateTime = new Date(bookingData.scheduledFor);
+      const startDateTime = new Date(scheduledFor);
       const endDateTime = new Date(startDateTime.getTime() + (60 * 60 * 1000)); // 1 hour later
       
       const eventDetails = {
         summary: 'CodeBridge Consultation',
-        description: `Technology consultation with ${bookingData.name}\n\nPhone: ${bookingData.phone}\nMessage: ${bookingData.message || 'N/A'}`,
+        description: `Technology consultation with ${name}\n\nPhone: ${phone || 'Not provided'}\nMessage: ${message || 'N/A'}`,
         startDateTime: startDateTime.toISOString(),
         endDateTime: endDateTime.toISOString(),
-        attendeeEmail: bookingData.email,
+        attendeeEmail: email,
         location: 'Video Conference (link will be provided)'
       };
 
