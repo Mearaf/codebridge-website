@@ -2,16 +2,39 @@ import { google } from 'googleapis';
 
 export class GoogleCalendarService {
   private calendar;
-  private auth;
+  private oauth2Client;
 
   constructor() {
-    this.auth = new google.auth.GoogleAuth({
-      // These will need to be set as environment variables
-      credentials: process.env.GOOGLE_CALENDAR_CREDENTIALS ? JSON.parse(process.env.GOOGLE_CALENDAR_CREDENTIALS) : undefined,
-      scopes: ['https://www.googleapis.com/auth/calendar'],
-    });
+    this.oauth2Client = new google.auth.OAuth2(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      process.env.NODE_ENV === 'production' 
+        ? `${process.env.REPLIT_DOMAINS?.split(',')[0] || 'localhost:5000'}/auth/google/callback`
+        : 'http://localhost:5000/auth/google/callback'
+    );
+
+    if (process.env.GOOGLE_REFRESH_TOKEN) {
+      this.oauth2Client.setCredentials({
+        refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      });
+    }
     
-    this.calendar = google.calendar({ version: 'v3', auth: this.auth });
+    this.calendar = google.calendar({ version: 'v3', auth: this.oauth2Client });
+  }
+
+  getAuthUrl() {
+    const scopes = ['https://www.googleapis.com/auth/calendar'];
+    return this.oauth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope: scopes,
+      prompt: 'consent'
+    });
+  }
+
+  async getTokenFromCode(code: string) {
+    const { tokens } = await this.oauth2Client.getToken(code);
+    this.oauth2Client.setCredentials(tokens);
+    return tokens;
   }
 
   async createEvent(eventDetails: {
@@ -55,8 +78,8 @@ export class GoogleCalendarService {
       };
 
       const response = await this.calendar.events.insert({
-        calendarId: 'primary',
-        resource: event,
+        calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+        requestBody: event,
         conferenceDataVersion: 1,
         sendUpdates: 'all',
       });
@@ -71,7 +94,7 @@ export class GoogleCalendarService {
   async getAvailableSlots(startDate: string, endDate: string) {
     try {
       const response = await this.calendar.events.list({
-        calendarId: 'primary',
+        calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
         timeMin: startDate,
         timeMax: endDate,
         singleEvents: true,
@@ -88,9 +111,9 @@ export class GoogleCalendarService {
   async updateEvent(eventId: string, updates: any) {
     try {
       const response = await this.calendar.events.patch({
-        calendarId: 'primary',
+        calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
         eventId: eventId,
-        resource: updates,
+        requestBody: updates,
         sendUpdates: 'all',
       });
 
@@ -104,7 +127,7 @@ export class GoogleCalendarService {
   async deleteEvent(eventId: string) {
     try {
       await this.calendar.events.delete({
-        calendarId: 'primary',
+        calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
         eventId: eventId,
         sendUpdates: 'all',
       });

@@ -1,10 +1,104 @@
 import { Calendar, Clock, Video, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import Footer from "@/components/Footer";
 import VideoBackgroundSection from "@/components/VideoBackgroundSection";
+import { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function BookCall() {
+  const [selectedDate, setSelectedDate] = useState<string>('');
+  const [selectedTime, setSelectedTime] = useState<string>('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const { toast } = useToast();
+
+  // Get available time slots for selected date
+  const { data: availability, isLoading: loadingAvailability } = useQuery({
+    queryKey: ['/api/calendar/availability', selectedDate],
+    enabled: !!selectedDate,
+  });
+
+  // Book calendar appointment
+  const bookingMutation = useMutation({
+    mutationFn: (bookingData: any) => 
+      apiRequest('/api/calendar/book', {
+        method: 'POST',
+        body: JSON.stringify(bookingData),
+        headers: { 'Content-Type': 'application/json' }
+      }),
+    onSuccess: (data) => {
+      toast({
+        title: "Appointment Booked!",
+        description: "We'll send you a calendar invitation with the meeting link shortly.",
+      });
+      // Reset form
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setSelectedDate('');
+      setSelectedTime('');
+    },
+    onError: () => {
+      toast({
+        title: "Booking Failed",
+        description: "There was an error booking your appointment. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!selectedDate || !selectedTime) {
+      toast({
+        title: "Missing Information",
+        description: "Please select a date and time for your appointment.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const scheduledFor = new Date(`${selectedDate}T${selectedTime}`).toISOString();
+    
+    bookingMutation.mutate({
+      ...formData,
+      scheduledFor,
+    });
+  };
+
+  // Generate date options (next 30 days, weekdays only)
+  const getAvailableDates = () => {
+    const dates = [];
+    const today = new Date();
+    
+    for (let i = 1; i <= 30; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      
+      // Skip weekends
+      if (date.getDay() !== 0 && date.getDay() !== 6) {
+        dates.push({
+          value: date.toISOString().split('T')[0],
+          display: date.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            month: 'long', 
+            day: 'numeric' 
+          })
+        });
+      }
+    }
+    return dates;
+  };
+
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-gray-50/60 to-white/90">
       {/* Hero Section */}
@@ -37,17 +131,112 @@ export default function BookCall() {
                 </h2>
               </CardHeader>
               <CardContent className="p-8">
-                {/* Placeholder for calendar integration */}
-                <div className="bg-gray-100 rounded-lg p-8 text-center border border-gray-300">
-                  <Calendar size={48} className="mx-auto mb-4 text-black" />
-                  <h3 className="text-lg font-semibold mb-2 text-black">Calendar Integration</h3>
-                  <p className="text-gray-700 mb-6">
-                    This would integrate with Calendly, Acuity Scheduling, or similar booking platform.
-                  </p>
-                  <Button className="bg-black hover:bg-gray-800 text-white font-semibold">
-                    Choose Your Time
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Contact Information */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        type="text"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="mt-1"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="mt-1"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="mt-1"
+                    />
+                  </div>
+
+                  {/* Date Selection */}
+                  <div>
+                    <Label htmlFor="date">Select Date *</Label>
+                    <select
+                      id="date"
+                      required
+                      value={selectedDate}
+                      onChange={(e) => {
+                        setSelectedDate(e.target.value);
+                        setSelectedTime(''); // Reset time when date changes
+                      }}
+                      className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                    >
+                      <option value="">Choose a date...</option>
+                      {getAvailableDates().map((date) => (
+                        <option key={date.value} value={date.value}>
+                          {date.display}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Time Selection */}
+                  {selectedDate && (
+                    <div>
+                      <Label htmlFor="time">Select Time *</Label>
+                      {loadingAvailability ? (
+                        <div className="mt-1 p-3 text-gray-500">Loading available times...</div>
+                      ) : (
+                        <select
+                          id="time"
+                          required
+                          value={selectedTime}
+                          onChange={(e) => setSelectedTime(e.target.value)}
+                          className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                        >
+                          <option value="">Choose a time...</option>
+                          {availability?.availableSlots?.map((slot: any) => (
+                            <option key={slot.startTime} value={new Date(slot.startTime).toTimeString().slice(0, 5)}>
+                              {slot.displayTime}
+                            </option>
+                          ))}
+                        </select>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Message */}
+                  <div>
+                    <Label htmlFor="message">What would you like to discuss? (Optional)</Label>
+                    <Textarea
+                      id="message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="mt-1"
+                      placeholder="Tell us about your technology challenges or goals..."
+                    />
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    disabled={bookingMutation.isPending}
+                    className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-3"
+                  >
+                    {bookingMutation.isPending ? 'Booking...' : 'Book Free Consultation'}
                   </Button>
-                </div>
+                </form>
               </CardContent>
             </Card>
 
