@@ -25,7 +25,7 @@ export default function Resources() {
     queryKey: ['/api/articles'],
   });
 
-  const resources = articles.map(article => ({
+  const resources = articles.map((article: any) => ({
     id: article.id,
     title: article.title,
     excerpt: article.excerpt,
@@ -37,15 +37,15 @@ export default function Resources() {
     slug: article.slug
   }));
 
-  const filteredResources = resources.filter(resource => {
+  const filteredResources = resources.filter((resource: any) => {
     const matchesSearch = resource.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          resource.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         resource.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                         resource.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === "all" || resource.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  const featuredResource = resources.find(r => r.featured);
+  const featuredResource = resources.find((r: any) => r.featured);
 
   const getIcon = (type: string) => {
     switch (type.toLowerCase()) {

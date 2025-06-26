@@ -12,6 +12,7 @@ import Services from "@/pages/Services";
 import BookCall from "@/pages/BookCall";
 import ClientIntake from "@/pages/ClientIntake";
 import Resources from "@/pages/Resources";
+import Article from "@/pages/Article";
 import Testimonials from "@/pages/Testimonials";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/book-call" component={BookCall} />
       <Route path="/client-intake" component={ClientIntake} />
       <Route path="/resources" component={Resources} />
+      <Route path="/resources/:slug" component={Article} />
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
