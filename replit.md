@@ -118,6 +118,9 @@ The application uses the following main entities:
   - Healthcare Practice Management: Technology Solutions for Small Medical Offices (17 min read)  
   - Legal Practice Technology: Modern Tools for Small Law Firms (19 min read)
   - Retail Technology Solutions: Point of Sale and Customer Management (20 min read)
+✓ Successfully uploaded codebase to GitHub repository: https://github.com/Mearaf/codebridge-website
+✓ Created AWS deployment configuration files (amplify.yml, Dockerfile, deployment guide)
+→ Ready for AWS Amplify deployment to learn cloud services
 
 ## Changelog
 
