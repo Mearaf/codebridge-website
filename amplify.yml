@@ -6,7 +6,7 @@ frontend:
         - npm ci
     build:
       commands:
-        - npm run build:frontend || npm run build
+        - npm run build
   artifacts:
     baseDirectory: dist/public
     files:
@@ -14,15 +14,3 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
-backend:
-  phases:
-    preBuild:
-      commands:
-        - npm ci
-    build:
-      commands:
-        - npm run build:backend || echo "Backend build completed"
-  artifacts:
-    baseDirectory: dist
-    files:
-      - '**/*'
