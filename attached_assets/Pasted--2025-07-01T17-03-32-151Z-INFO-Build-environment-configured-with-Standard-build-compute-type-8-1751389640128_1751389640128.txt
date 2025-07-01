@@ -1,0 +1,150 @@
+
+2025-07-01T17:03:32.151Z [INFO]: # Build environment configured with Standard build compute type: 8GiB Memory, 4vCPUs, 128GB Disk Space
+
+1
+
+2025-07-01T17:03:32.554Z [INFO]: # Cloning repository: git@github.com:Mearaf/codebridge-website.git
+
+2
+
+2025-07-01T17:03:33.128Z [INFO]: 
+
+3
+
+2025-07-01T17:03:33.128Z [INFO]: Cloning into 'codebridge-website'...
+
+4
+
+2025-07-01T17:03:33.129Z [INFO]: # Switching to commit: 2ca03de1373d7134b674c1afc5fe4dd9185d1c03
+
+5
+
+2025-07-01T17:03:33.144Z [INFO]: Note: switching to '2ca03de1373d7134b674c1afc5fe4dd9185d1c03'.
+
+6
+
+                                 You are in 'detached HEAD' state. You can look around, make experimental
+
+7
+
+                                 changes and commit them, and you can discard any commits you make in this
+
+8
+
+                                 state without impacting any branches by switching back to a branch.
+
+9
+
+                                 If you want to create a new branch to retain commits you create, you may
+
+10
+
+                                 do so (now or later) by using -c with the switch command. Example:
+
+11
+
+                                 git switch -c <new-branch-name>
+
+12
+
+                                 Or undo this operation with:
+
+13
+
+                                 git switch -
+
+14
+
+                                 Turn off this advice by setting config variable advice.detachedHead to false
+
+15
+
+                                 HEAD is now at 2ca03de Improve build process by streamlining commands and removing backend build
+
+16
+
+2025-07-01T17:03:33.283Z [INFO]: Successfully cleaned up Git credentials
+
+17
+
+2025-07-01T17:03:33.284Z [INFO]: # Checking for Git submodules at: /codebuild/output/src1212127991/src/codebridge-website/.gitmodules
+
+18
+
+2025-07-01T17:03:33.291Z [INFO]: # Retrieving environment cache...
+
+19
+
+2025-07-01T17:03:33.377Z [INFO]: # Retrieved environment cache
+
+20
+
+2025-07-01T17:03:33.377Z [INFO]: ---- Setting Up SSM Secrets ----
+
+21
+
+2025-07-01T17:03:33.378Z [INFO]: SSM params {"Path":"/amplify/d1901a6nzztvm7/main/","WithDecryption":true}
+
+22
+
+2025-07-01T17:03:33.427Z [WARNING]: !Failed to set up process.env.secrets
+
+23
+
+2025-07-01T17:03:34.429Z [INFO]: # No package override configuration found.
+
+24
+
+2025-07-01T17:03:34.433Z [INFO]: # Retrieving cache...
+
+25
+
+2025-07-01T17:03:46.910Z [INFO]: # Extracting cache...
+
+26
+
+2025-07-01T17:03:54.581Z [INFO]: # Extraction completed
+
+27
+
+2025-07-01T17:03:54.759Z [INFO]: # Retrieved cache
+
+28
+
+2025-07-01T17:03:59.288Z [INFO]: ## Starting Backend Build
+
+29
+
+                                 ## Checking for associated backend environment...
+
+30
+
+                                 ## No backend environment association found, continuing...
+
+31
+
+                                 ## Completed Backend Build
+
+32
+
+2025-07-01T17:03:59.293Z [INFO]: {"backendDuration": 0}
+
+33
+
+                                 ## Starting Frontend Build
+
+34
+
+                                 # Starting phase: preBuild
+
+35
+
+                                 # Executing command: npm ci
+
+36
+
+2025-07-01T17:04:19.777Z [WARNING]: npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+
+37
+
+2025-07-01T17:04:25.255Z [INFO]: added 397 packages, and audited 398 packages in 23s
