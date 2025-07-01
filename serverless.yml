@@ -1,0 +1,59 @@
+service: codebridge-api
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  environment:
+    DATABASE_URL: ${env:DATABASE_URL}
+  httpApi:
+    cors:
+      allowedOrigins:
+        - "https://main.d1901a6nzztvm7.amplifyapp.com"
+        - "https://code-bridge.co"
+        - "https://www.code-bridge.co"
+      allowedHeaders:
+        - Content-Type
+        - X-Amz-Date
+        - Authorization
+        - X-Api-Key
+        - X-Amz-Security-Token
+      allowedMethods:
+        - GET
+        - POST
+        - OPTIONS
+
+functions:
+  testimonials:
+    handler: testimonials.handler
+    events:
+      - httpApi:
+          path: /api/testimonials
+          method: get
+      - httpApi:
+          path: /api/testimonials/featured
+          method: get
+
+  contact:
+    handler: contact.handler
+    events:
+      - httpApi:
+          path: /api/contact
+          method: post
+
+  emailSignup:
+    handler: email-signup.handler
+    events:
+      - httpApi:
+          path: /api/email-signup
+          method: post
+
+  clientIntake:
+    handler: client-intake.handler
+    events:
+      - httpApi:
+          path: /api/client-intake
+          method: post
+
+plugins:
+  - serverless-offline

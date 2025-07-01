@@ -120,7 +120,14 @@ The application uses the following main entities:
   - Retail Technology Solutions: Point of Sale and Customer Management (20 min read)
 ✓ Successfully uploaded codebase to GitHub repository: https://github.com/Mearaf/codebridge-website
 ✓ Created AWS deployment configuration files (amplify.yml, Dockerfile, deployment guide)
-→ Ready for AWS Amplify deployment to learn cloud services
+✓ Successfully deployed frontend to AWS Amplify at https://main.d1901a6nzztvm7.amplifyapp.com
+✓ Set up AWS RDS PostgreSQL database with all tables (users, contacts, email_signups, client_intakes, testimonials, articles, calendar_bookings)
+✓ Created AWS Lambda functions for serverless backend API:
+  - testimonials.js (GET /api/testimonials, /api/testimonials/featured)
+  - contact.js (POST /api/contact)
+  - email-signup.js (POST /api/email-signup)
+  - client-intake.js (POST /api/client-intake)
+→ Ready to deploy Lambda functions and connect custom domain code-bridge.co
 
 ## Changelog
 
