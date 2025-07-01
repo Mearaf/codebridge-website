@@ -1,0 +1,87 @@
+025-07-01T17:14:59.424Z [WARNING]: ✗ Build failed in 184ms
+
+52
+
+                                    error during build:
+
+53
+
+                                    [vite:css] Failed to load PostCSS config (searchPath: /codebuild/output/src4035810905/src/codebridge-website/client): [Error] Loading PostCSS Plugin failed: Cannot find module 'autoprefixer'
+
+54
+
+                                    Require stack:
+
+55
+
+                                    - /codebuild/output/src4035810905/src/codebridge-website/postcss.config.js
+
+56
+
+                                    (@/codebuild/output/src4035810905/src/codebridge-website/postcss.config.js)
+
+57
+
+                                    Error: Loading PostCSS Plugin failed: Cannot find module 'autoprefixer'
+
+58
+
+                                    Require stack:
+
+59
+
+                                    - /codebuild/output/src4035810905/src/codebridge-website/postcss.config.js
+
+60
+
+                                    (@/codebuild/output/src4035810905/src/codebridge-website/postcss.config.js)
+
+61
+
+                                    at load (file:///root/.npm/_npx/9ed06546b0653f96/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11776:11)
+
+62
+
+                                    at async Promise.all (index 1)
+
+63
+
+                                    at async plugins (file:///root/.npm/_npx/9ed06546b0653f96/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11805:12)
+
+64
+
+                                    at async processResult (file:///root/.npm/_npx/9ed06546b0653f96/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:11876:14)
+
+65
+
+                                    file: /codebuild/output/src4035810905/src/codebridge-website/client/src/index.css
+
+66
+
+2025-07-01T17:14:59.442Z [ERROR]: !!! Build failed
+
+67
+
+2025-07-01T17:14:59.442Z [ERROR]: !!! Error: Command failed with exit code 1
+
+68
+
+2025-07-01T17:14:59.442Z [INFO]: # Starting environment caching...
+
+69
+
+2025-07-01T17:14:59.442Z [INFO]: # Uploading environment cache artifact...
+
+70
+
+2025-07-01T17:14:59.540Z [INFO]: # Uploaded environment cache artifact
+
+71
+
+2025-07-01T17:14:59.540Z [INFO]: # Environment caching completed
+
+72
+
+73
+
+Deploy

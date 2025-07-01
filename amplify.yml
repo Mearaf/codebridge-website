@@ -4,9 +4,11 @@ frontend:
     preBuild:
       commands:
         - npm ci
+        - cp postcss.config.js client/
+        - cp tailwind.config.ts client/
     build:
       commands:
-        - cd client && npx vite build --outDir ../dist/public --emptyOutDir
+        - cd client && NODE_ENV=production npx vite build --outDir ../dist/public --emptyOutDir
         - npx esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
   artifacts:
     baseDirectory: dist/public
